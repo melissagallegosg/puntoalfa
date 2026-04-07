@@ -83,12 +83,12 @@ export default function Services() {
           // Sistema de servicios
         </motion.div>
         <motion.h2 variants={fadeUp} className="text-[clamp(32px,5vw,56px)] font-bold leading-tight tracking-tight mb-4">
-          Los tres brazos
+          Las tres áreas
           <br />
           de Punto Alfa
         </motion.h2>
         <motion.p variants={fadeUp} className="text-muted text-[15px] leading-relaxed max-w-md">
-          Cada brazo resuelve una fase del lanzamiento. Puedes contratar uno o activarlos todos.
+          Cada área resuelve una fase del lanzamiento. Puedes contratar una o activarlas todas.
         </motion.p>
       </motion.div>
 

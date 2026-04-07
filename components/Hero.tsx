@@ -8,7 +8,7 @@ const stats = [
   { num: "NOM-051", label: "Cumplimiento normativo" },
   { num: "2–3d", label: "Entrega tabla nutrimental" },
   { num: "$2,000", label: "Desde MXN por servicio" },
-  { num: "3", label: "Brazos especializados" },
+  { num: "3", label: "Áreas especializadas" },
 ];
 
 export default function Hero() {
