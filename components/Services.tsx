@@ -17,12 +17,11 @@ const arms = [
     services: [
       "Tabla nutrimental teórica NOM-051",
       "Sellos frontales de advertencia (octágonos)",
-      "Consultoría de reducción de sellos",
-      "Validación pre-impresión",
+      "Validación pre-impresión NOM-051 (medidas, proporciones, normativa)",
+      "Consultoría de formulación de cero o análisis para reducir sellos",
       "Evaluación de producto nuevo",
-      "Adaptación FDA para exportación EUA",
     ],
-    price: "Desde $2,000 MXN",
+    price: "Desde $2,300 MXN",
     time: "2–3 días",
   },
   {
@@ -35,10 +34,8 @@ const arms = [
     description:
       "Branding, diseño de etiqueta regulatoria y empaque. Identidad visual que conecta tu producto con el consumidor correcto.",
     services: [
-      "Branding básico (logo + paleta + tipografía)",
-      "Diseño de etiqueta regulatoria",
-      "Branding de empaque + mockups",
-      "Identidad visual completa",
+      "Branding básico (logo + paleta de colores + tipografía)",
+      "Branding de empaque (básico + diseño de etiqueta + mockups)",
       "Archivos para imprenta listos",
     ],
     price: "Desde $3,000 MXN",
@@ -54,13 +51,13 @@ const arms = [
     description:
       "Landing page, redes sociales y automatizaciones. Tu marca activa 24/7 desde el día del lanzamiento.",
     services: [
-      "Landing page + integración WhatsApp",
-      "Estrategia de redes + contenido mensual",
-      "Bot WhatsApp 24/7",
-      "Setup marketplace (FB, IG, MercadoLibre)",
+      "Landing page de producto + botón WhatsApp integrado + integración con redes",
+      "Estrategia de redes + contenido inicial (12 posts estáticos, copy incluido)",
+      "Estrategia de redes completa (12 posts + 2 reels + 10 imágenes de producto, copy incluido)",
+      "Bot WhatsApp 24/7 con flujos personalizados",
       "Automatizaciones y CRM básico",
     ],
-    price: "Desde $2,500 MXN",
+    price: "Desde $2,000 MXN",
     time: "5–7 días",
   },
 ];

@@ -14,9 +14,9 @@ const services = [
 ];
 
 const paquetes = [
-  { label: "Solo Lab — $2,000 MXN", href: "#paquetes" },
-  { label: "Inicio Producto — $4,500 MXN", href: "#paquetes" },
-  { label: "Lanzamiento — $7,500 MXN", href: "#paquetes" },
+  { label: "Solo Lab — $2,300 MXN", href: "#paquetes" },
+  { label: "Inicio Producto — $5,000 MXN", href: "#paquetes" },
+  { label: "Lanzamiento — $9,000 MXN", href: "#paquetes" },
   { label: "Marca Completa — $12,000 MXN", href: "#paquetes" },
 ];
 

@@ -22,7 +22,10 @@ const packages: Record<Tab, Array<{
       name: "Solo Lab",
       price: "$2,300",
       sub: "MXN · 2–3 días hábiles",
-      items: ["Tabla nutrimental teórica", "Sellos NOM-051", "PDF + PNG para etiqueta"],
+      items: [
+        "Tabla nutrimental teórica + sellos NOM-051",
+        "PDF + PNG para etiqueta",
+      ],
       cta: "Solicitar",
     },
     {
@@ -32,9 +35,8 @@ const packages: Record<Tab, Array<{
       sub: "MXN · 1 semana",
       items: [
         "Tabla + sellos NOM-051",
-        "Validación pre-impresión",
-        "Branding de empaque",
-        "Mockups incluidos",
+        "Validación pre-impresión NOM-051",
+        "Branding de empaque (etiqueta + mockups)",
       ],
       star: true,
       cta: "Solicitar",
@@ -46,9 +48,8 @@ const packages: Record<Tab, Array<{
       sub: "MXN · 2–3 semanas",
       items: [
         "Todo Inicio Producto",
-        "Landing page + WhatsApp",
-        "Setup marketplace",
-        "Consultoría de sellos",
+        "Landing page + botón WhatsApp",
+        "Estrategia de redes + contenido inicial (12 posts, copy incluido)",
       ],
       cta: "Solicitar",
     },
@@ -59,10 +60,9 @@ const packages: Record<Tab, Array<{
       sub: "MXN · 3–4 semanas",
       items: [
         "Todo Lanzamiento",
-        "Branding e identidad",
-        "Estrategia de redes",
-        "Bot WhatsApp 24/7",
-        "Automatizaciones",
+        "Branding e identidad completa",
+        "Estrategia de redes + contenido completo",
+        "Automatizaciones básicas",
       ],
       cta: "Cotizar",
     },
@@ -70,7 +70,7 @@ const packages: Record<Tab, Array<{
   lab: [
     {
       badge: "// Alfa Lab",
-      name: "Tabla + Sellos",
+      name: "Tabla nutrimental + sellos NOM-051",
       price: "$2,300",
       sub: "MXN · 2–3 días",
       items: [
@@ -83,7 +83,7 @@ const packages: Record<Tab, Array<{
     },
     {
       badge: "// Alfa Lab",
-      name: "Validación pre-impresión",
+      name: "Validación pre-impresión NOM-051",
       price: "$700",
       sub: "MXN · 1 día",
       items: [
@@ -95,12 +95,12 @@ const packages: Record<Tab, Array<{
     },
     {
       badge: "// Alfa Lab",
-      name: "Asesoría de formulación y/o consultoría de sellos",
+      name: "Consultoría de formulación o reducción de sellos",
       price: "A cotizar",
-      sub: "según producto",
+      sub: "Variable según producto",
       items: [
+        "Formulación de producto desde cero",
         "Análisis para reducir octágonos",
-        "Ajuste de formulación o receta",
         "Evaluación de producto nuevo",
       ],
       cta: "Cotizar",
@@ -112,7 +112,11 @@ const packages: Record<Tab, Array<{
       name: "Branding básico",
       price: "$3,000",
       sub: "MXN · 2–3 días",
-      items: ["Logo profesional", "Paleta de colores", "Tipografía de marca"],
+      items: [
+        "Logo profesional",
+        "Paleta de colores",
+        "Tipografía de marca",
+      ],
       cta: "Solicitar",
     },
     {
@@ -122,9 +126,9 @@ const packages: Record<Tab, Array<{
       sub: "MXN · 1 semana",
       items: [
         "Todo Branding básico",
-        "Diseño de etiqueta",
+        "Diseño de etiqueta regulatoria",
         "Mockups de producto",
-        "Archivos para imprenta",
+        "Archivos para imprenta listos",
       ],
       star: true,
       cta: "Solicitar",
@@ -133,42 +137,47 @@ const packages: Record<Tab, Array<{
   digital: [
     {
       badge: "// Alfa Digital",
-      name: "Landing page",
+      name: "Landing page de producto",
       price: "$4,000",
       sub: "MXN · 5–7 días",
       items: [
         "Landing page de producto",
         "Botón WhatsApp integrado",
-        "Integración con redes",
+        "Integración con redes sociales",
       ],
       cta: "Solicitar",
     },
     {
       badge: "// Alfa Digital",
-      name: "Redes + contenido",
+      name: "Redes + contenido inicial",
       price: "$2,500",
       sub: "MXN · 5 días",
-      items: ["12 posts estáticos mensuales", "Diseño con identidad visual", "Copy incluido"],
+      items: [
+        "12 posts estáticos mensuales",
+        "Diseño adaptado a tu identidad visual",
+        "Copy incluido",
+      ],
       cta: "Solicitar",
     },
     {
       badge: "// Más completo",
-      name: "Redes completo",
+      name: "Redes + contenido completo",
       price: "$6,000",
       sub: "MXN / mes",
       items: [
-        "12 posts estáticos",
-        "2 reels editados",
-        "10 imágenes de producto",
-        "Bot WhatsApp 24/7 incluido",
+        "12 posts estáticos mensuales",
+        "Edición de 2 reels (tú grabas, nosotros editamos)",
+        "10 imágenes de producto/servicio",
+        "Diseño adaptado a tu identidad visual",
         "Copy incluido",
+        "Bot WhatsApp 24/7 incluido",
       ],
       star: true,
       cta: "Solicitar",
     },
     {
       badge: "// Alfa Digital",
-      name: "Bot WhatsApp",
+      name: "Bot WhatsApp 24/7",
       price: "$2,000",
       sub: "MXN · 5–7 días",
       items: [
