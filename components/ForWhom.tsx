@@ -53,14 +53,14 @@ export default function ForWhom() {
             // ¿Para quién es esto?
           </motion.div>
           <motion.h2 variants={fadeUp} className="text-[clamp(32px,5vw,56px)] font-bold leading-tight tracking-tight mb-4">
-            Hecho para quien
+            Desde la idea
             <br />
-            tiene el producto,
+            hasta el mercado,
             <br />
-            no el equipo.
+            contigo.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-muted text-[15px] max-w-md leading-relaxed">
-            Si tienes una receta lista pero no sabes cómo cumplir la norma, diseñar la etiqueta o lanzarte al mercado — esto es para ti.
+            Ya sea que tengas una receta lista o apenas estés desarrollando tu producto — te acompañamos desde la formulación, la norma, el diseño y el lanzamiento.
           </motion.p>
         </motion.div>
 

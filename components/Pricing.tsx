@@ -94,7 +94,7 @@ const packages: Record<Tab, Array<{
     },
     {
       badge: "// Alfa Lab",
-      name: "Consultoría de sellos",
+      name: "Asesoría de formulación y/o consultoría de sellos",
       price: "A cotizar",
       sub: "según producto",
       items: [
