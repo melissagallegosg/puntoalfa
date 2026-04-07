@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { fadeUp, staggerContainer, WHATSAPP_URL } from "@/lib/motion";
 
@@ -13,7 +13,7 @@ const arms = [
     color: "neon",
     accent: "#C6F135",
     description:
-      "Tabla nutrimental teórica, sellos NOM-051 y cumplimiento regulatorio completo. Sin laboratorio inicial. Entrega en 2–3 días hábiles.",
+      "Tabla nutrimental teórica, sellos NOM-051 y cumplimiento regulatorio completo mediante cálculo teórico. Entrega en 2–3 días hábiles.",
     services: [
       "Tabla nutrimental teórica NOM-051",
       "Sellos frontales de advertencia (octágonos)",
@@ -65,8 +65,282 @@ const arms = [
   },
 ];
 
+const labDetails = {
+  problema: {
+    titulo: "Sin tabla nutrimental, tu producto no puede venderse legalmente",
+    cuerpo:
+      "Todo alimento preenvasado en México está obligado a llevar una declaración nutrimental conforme a la NOM-051. Sin ella, tu producto está expuesto a multas y retiro forzoso del mercado.",
+    nota:
+      "Muchos emprendedores no saben que el análisis de laboratorio no es obligatorio para iniciar. La norma acepta el cálculo teórico, que es más rápido y económico.",
+    puntos: [
+      {
+        titulo: "Cumplimiento NOM-051 obligatorio",
+        desc: "Para cualquier alimento envasado que se venda en territorio nacional, sin importar si es producción nacional o importada.",
+      },
+      {
+        titulo: "Sellos frontales de advertencia",
+        desc: "La reforma de 2020 exige la determinación de octágonos según los valores por 100 g ó 100 ml del producto.",
+      },
+      {
+        titulo: "El cálculo teórico es 100% legal",
+        desc: "El inciso 4.5.2.4.15 de la NOM-051 permite el uso de bases de datos reconocidas internacionalmente.",
+      },
+      {
+        titulo: "Archivos listos para imprimir",
+        desc: "Recibes PDF + PNG de la tabla y los sellos, con las proporciones y tipografías correctas según norma.",
+      },
+    ],
+  },
+  proceso: [
+    {
+      num: "1",
+      titulo: "Envías tu formulación",
+      desc: "Lista completa de ingredientes con cantidades en gramos. Por WhatsApp o correo.",
+    },
+    {
+      num: "2",
+      titulo: "Realizamos el cálculo",
+      desc: "Usando bases de datos nutrimentales reconocidas internacionalmente, con metodología precisa.",
+    },
+    {
+      num: "3",
+      titulo: "Determinamos tus sellos",
+      desc: "Evaluamos cada componente según los criterios de la NOM-051 (por 100 g ó 100 ml).",
+    },
+    {
+      num: "4",
+      titulo: "Entrega final",
+      desc: "PDF + PNG de tu tabla nutrimental y sellos, listos para insertar en tu diseño de etiqueta.",
+    },
+  ],
+  baseLegal: {
+    cita:
+      '"Los valores de composición bromatológica que figuren en la declaración nutrimental deben ser valores medios ponderados derivados por análisis, bases de datos o tablas reconocidas internacionalmente."',
+    referencia: "— NOM-051-SCFI/SSAI-2010, inciso 4.5.2.4.15",
+    puntos: [
+      {
+        titulo: "Aceptada por el 99% del mercado",
+        desc: "La práctica totalidad de productos envasados en México usa cálculo teórico, no análisis de laboratorio.",
+      },
+      {
+        titulo: "Sin necesidad de muestras físicas",
+        desc: "Solo necesitamos tu receta y formulación. No hay envíos, no hay costos adicionales de laboratorio.",
+      },
+      {
+        titulo: "Válida para puntos de venta y distribuidores",
+        desc: "Supermercados, tiendas especializadas y canales de distribución aceptan tablas por cálculo teórico.",
+      },
+      {
+        titulo: "Base para escalar a laboratorio",
+        desc: "Cuando tu producto crezca, la tabla teórica sirve de referencia para el análisis bromatológico formal.",
+      },
+    ],
+  },
+  requisitos: {
+    lista: [
+      {
+        num: "01",
+        titulo: "Lista completa de ingredientes",
+        desc: "Con cantidades exactas en gramos (incluidos líquidos).",
+      },
+      {
+        num: "02",
+        titulo: "Peso del producto final",
+        desc: "Cuántos gramos o mililitros tiene el producto terminado.",
+      },
+      {
+        num: "03",
+        titulo: "Tamaño de porción",
+        desc: "El peso de la porción que se declara en el empaque.",
+      },
+      {
+        num: "04",
+        titulo: "Proceso de elaboración",
+        desc: "Si hay cocción u otro proceso térmico, indicar el peso antes y después.",
+      },
+      {
+        num: "05",
+        titulo: "Ingredientes procesados",
+        desc: "Si usas productos envasados como ingrediente, compartir su etiqueta nutrimental.",
+      },
+    ],
+    cuandoLab: [
+      "Producción a gran escala con certificación documental",
+      "Exportación a mercados que lo exigen específicamente",
+      "Productos con formulación muy compleja o ingredientes poco documentados",
+      "Cuando el cliente o distribuidor lo solicita expresamente",
+    ],
+  },
+};
+
+type LabTab = "problema" | "proceso" | "legal" | "requisitos";
+
+function LabExpandable() {
+  const [labTab, setLabTab] = useState<LabTab>("problema");
+
+  const labTabs: { id: LabTab; label: string }[] = [
+    { id: "problema", label: "El problema" },
+    { id: "proceso", label: "Proceso" },
+    { id: "legal", label: "Base legal" },
+    { id: "requisitos", label: "Requisitos" },
+  ];
+
+  return (
+    <div className="mt-4 border border-neon/20 rounded-lg overflow-hidden bg-bg">
+      {/* Sub-tabs */}
+      <div className="flex border-b border-border overflow-x-auto">
+        {labTabs.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setLabTab(t.id)}
+            className={`flex-shrink-0 px-5 py-3 text-[10px] tracking-[1.5px] uppercase transition-all duration-200 border-r border-border last:border-r-0 ${
+              labTab === t.id
+                ? "text-neon bg-neon/5 font-bold"
+                : "text-muted hover:text-white"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={labTab}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25 }}
+          className="p-6"
+        >
+          {/* PROBLEMA */}
+          {labTab === "problema" && (
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-[14px] font-bold mb-2 leading-snug">
+                  {labDetails.problema.titulo}
+                </h4>
+                <p className="text-muted text-[12px] leading-relaxed mb-4">
+                  {labDetails.problema.cuerpo}
+                </p>
+                <div className="border-l-2 border-neon/40 pl-4 py-1">
+                  <p className="text-[11px] text-[#aaa] leading-relaxed">
+                    {labDetails.problema.nota}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                {labDetails.problema.puntos.map((p, i) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="w-5 h-5 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-neon text-[8px]">✓</span>
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-semibold mb-0.5">{p.titulo}</div>
+                      <div className="text-muted text-[11px] leading-relaxed">{p.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* PROCESO */}
+          {labTab === "proceso" && (
+            <div>
+              <p className="text-muted text-[12px] mb-5">
+                No necesitas ser experto en normativa. Solo comparte los datos de tu producto y nos encargamos del resto.
+              </p>
+              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+                {labDetails.proceso.map((s, i) => (
+                  <div key={i} className="bg-bg2 border border-border rounded-lg p-4">
+                    <div className="w-7 h-7 rounded-full bg-neon text-bg text-[11px] font-bold flex items-center justify-center mb-3">
+                      {s.num}
+                    </div>
+                    <div className="text-[12px] font-semibold mb-1">{s.titulo}</div>
+                    <div className="text-muted text-[11px] leading-relaxed">{s.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* BASE LEGAL */}
+          {labTab === "legal" && (
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-[13px] font-bold mb-3">¿La tabla teórica es válida y legal?</h4>
+                <p className="text-muted text-[12px] leading-relaxed mb-4">
+                  Sí. La propia Norma Oficial Mexicana lo permite explícitamente. No necesitas análisis de laboratorio para comenzar a comercializar tu producto.
+                </p>
+                <div className="bg-bg2 border border-border rounded-lg p-4 mb-3">
+                  <p className="text-[11px] text-[#aaa] leading-relaxed italic mb-2">
+                    {labDetails.baseLegal.cita}
+                  </p>
+                  <p className="text-[10px] text-neon/70 font-mono">{labDetails.baseLegal.referencia}</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                {labDetails.baseLegal.puntos.map((p, i) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="w-5 h-5 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-neon text-[8px]">✓</span>
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-semibold mb-0.5">{p.titulo}</div>
+                      <div className="text-muted text-[11px] leading-relaxed">{p.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* REQUISITOS */}
+          {labTab === "requisitos" && (
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-[13px] font-bold mb-4">¿Qué necesito para empezar?</h4>
+                <div className="flex flex-col divide-y divide-border border border-border rounded-lg overflow-hidden">
+                  {labDetails.requisitos.lista.map((r, i) => (
+                    <div key={i} className="flex gap-3 p-3 bg-bg2 hover:bg-bg3 transition-colors">
+                      <span className="text-neon font-mono text-[10px] mt-0.5 flex-shrink-0">{r.num}</span>
+                      <div>
+                        <div className="text-[12px] font-semibold">{r.titulo}</div>
+                        <div className="text-muted text-[11px] leading-relaxed">{r.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-bg2 border border-border rounded-lg p-4">
+                <h5 className="text-[12px] font-bold mb-3">¿Cuándo sí necesitas laboratorio?</h5>
+                <p className="text-muted text-[11px] leading-relaxed mb-3">
+                  El análisis bromatológico se recomienda en casos específicos. La tabla teórica es el primer paso ideal para emprendedores:
+                </p>
+                <ul className="flex flex-col gap-2">
+                  {labDetails.requisitos.cuandoLab.map((item, i) => (
+                    <li key={i} className="flex gap-2 text-[11px] text-[#aaa]">
+                      <span className="text-neon font-mono flex-shrink-0">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[11px] text-neon/80 mt-4 leading-relaxed">
+                  Para la etapa de lanzamiento, el cálculo teórico es suficiente, legal y mucho más ágil.
+                </p>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Services() {
   const [active, setActive] = useState("lab");
+  const [labOpen, setLabOpen] = useState(false);
   const activeArm = arms.find((a) => a.id === active)!;
 
   return (
@@ -192,6 +466,46 @@ export default function Services() {
           </ul>
         </div>
       </motion.div>
+
+      {/* Expandable "Saber más" — solo para Lab */}
+      <AnimatePresence>
+        {active === "lab" && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="mt-3"
+          >
+            <button
+              onClick={() => setLabOpen(!labOpen)}
+              className="flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-muted hover:text-neon transition-colors duration-200"
+            >
+              <span
+                className="inline-block transition-transform duration-300 font-mono text-neon"
+                style={{ transform: labOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+              >
+                →
+              </span>
+              {labOpen ? "Cerrar info técnica" : "Saber más sobre la tabla nutrimental teórica"}
+            </button>
+
+            <AnimatePresence>
+              {labOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="overflow-hidden"
+                >
+                  <LabExpandable />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Sub-section anchors */}
       <div className="hidden">

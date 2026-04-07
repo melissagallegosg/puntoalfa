@@ -7,7 +7,7 @@ const steps = [
   {
     num: "01",
     title: "Formulación y norma",
-    desc: "Calculamos tu tabla nutrimental y determinamos los sellos NOM-051 con base en tu receta exacta. Sin laboratorio. En 2–3 días.",
+    desc: "Calculamos tu tabla nutrimental teórica y determinamos los sellos NOM-051 con base en tu receta exacta. En 2–3 días.",
     tag: "Alfa Lab",
     tagColor: "#C6F135",
     tagBg: "rgba(198,241,53,0.08)",
