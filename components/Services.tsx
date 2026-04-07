@@ -83,7 +83,7 @@ const labDetails = {
       },
       {
         titulo: "El cálculo teórico es 100% legal",
-        desc: "El inciso 4.5.2.4.15 de la NOM-051 permite el uso de bases de datos reconocidas internacionalmente.",
+        desc: "El inciso 4.2.8.3.8 de la NOM-051 permite el uso de bases de datos reconocidas internacionalmente.",
       },
       {
         titulo: "Archivos listos para imprimir",
@@ -115,8 +115,8 @@ const labDetails = {
   ],
   baseLegal: {
     cita:
-      '"Los valores de composición bromatológica que figuren en la declaración nutrimental deben ser valores medios ponderados derivados por análisis, bases de datos o tablas reconocidas internacionalmente."',
-    referencia: "— NOM-051-SCFI/SSAI-2010, inciso 4.5.2.4.15",
+      '"Los valores de composición bromatológica que figuren en la declaración de nutrimentos del alimento o bebida no alcohólica preenvasado, deben ser valores medios ponderados derivados por análisis, bases de datos o tablas reconocidas internacionalmente."',
+    referencia: "— NOM-051-SCFI/SSAI-2010, inciso 4.2.8.3.8",
     puntos: [
       {
         titulo: "Aceptada por el 99% del mercado",
