@@ -185,3 +185,24 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Reflect-style scroll reveal ── */
+@keyframes reveal-blur {
+  from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
+}
+.reveal-blur {
+  animation: reveal-blur 0.85s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* ── Word mask (clip reveal) ── */
+.word-mask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* ── Magnetic button base ── */
+.magnetic {
+  transition: box-shadow 0.3s ease;
+  will-change: transform;
+}
