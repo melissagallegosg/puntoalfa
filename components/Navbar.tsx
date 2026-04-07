@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,27 +8,29 @@ import { WHATSAPP_URL } from "@/lib/motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Lab", href: "#lab" },
+  { label: "Lab",      href: "#lab" },
   { label: "Creativo", href: "#creativo" },
-  { label: "Digital", href: "#digital" },
+  { label: "Digital",  href: "#digital" },
   { label: "Paquetes", href: "#paquetes" },
 ];
 
 export default function Navbar() {
   const { scrollY } = useScroll();
-  const borderOpacity = useTransform(scrollY, [0, 80], [0, 1]);
-  const bgOpacity = useTransform(scrollY, [0, 80], [0, 0.95]);
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        backgroundColor: `rgba(10,10,10,${bgOpacity.get()})`,
-        borderBottomColor: `rgba(30,30,30,${borderOpacity.get()})`,
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
-      }}
+      initial={{ y: -16, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "backdrop-blur-2xl bg-[rgba(10,10,10,0.72)] border-b border-white/[0.06] shadow-[0_1px_0_rgba(198,241,53,0.04)]"
+          : "bg-transparent border-b border-transparent"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -38,12 +40,12 @@ export default function Navbar() {
               src="/images/logo.jpg"
               alt="Punto Alfa"
               fill
-              className="object-contain"
+              className="object-contain transition-all duration-500"
               style={{ mixBlendMode: "screen" }}
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[13px] font-bold tracking-[3px] text-white leading-none">
+            <span className="text-[13px] font-bold tracking-[3px] text-white leading-none group-hover:text-neon transition-colors duration-300">
               PUNTO ALFA
             </span>
             <span className="text-[8px] tracking-[2.5px] text-muted uppercase leading-none mt-0.5">
@@ -58,9 +60,10 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              className="text-[11px] tracking-[1.5px] uppercase text-muted hover:text-neon transition-colors duration-200"
+              className="relative text-[11px] tracking-[1.5px] uppercase text-muted hover:text-white transition-colors duration-300 group"
             >
               {l.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-neon group-hover:w-full transition-all duration-400" />
             </a>
           ))}
         </div>
@@ -71,15 +74,16 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-neon text-bg text-[11px] font-bold tracking-[1px] uppercase px-5 py-2.5 rounded hover:bg-neon-dim transition-colors duration-200"
+            className="relative overflow-hidden bg-neon text-bg text-[11px] font-bold tracking-[1px] uppercase px-5 py-2.5 rounded transition-all duration-400 hover:shadow-[0_0_24px_rgba(198,241,53,0.35)] hover:scale-[1.03] active:scale-[0.98] group"
           >
-            Cotizar →
+            <span className="relative z-10">Cotizar →</span>
+            <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 skew-x-12" />
           </a>
         </div>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white p-1"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -90,10 +94,11 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="md:hidden bg-bg2 border-t border-border px-6 py-6 flex flex-col gap-5"
+          initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="md:hidden backdrop-blur-2xl bg-[rgba(10,10,10,0.90)] border-t border-white/[0.06] px-6 py-6 flex flex-col gap-5"
         >
           {navLinks.map((l) => (
             <a
@@ -109,7 +114,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-neon text-bg text-[11px] font-bold tracking-[1px] uppercase px-5 py-3 rounded text-center mt-2"
+            className="bg-neon text-bg text-[11px] font-bold tracking-[1px] uppercase px-5 py-3 rounded text-center mt-2 hover:shadow-[0_0_24px_rgba(198,241,53,0.3)] transition-all duration-300"
           >
             Cotizar por WhatsApp →
           </a>

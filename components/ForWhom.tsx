@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeUp, staggerContainer, staggerFast } from "@/lib/motion";
+import { fadeUp, staggerContainer, staggerFast, fadeScale } from "@/lib/motion";
 
 const profiles = [
   {
@@ -31,16 +31,27 @@ const profiles = [
 ];
 
 const painPoints = [
-  { label: "Sin normativa", desc: "Tu producto no puede venderse legalmente sin cumplir NOM-051" },
-  { label: "Sin identidad", desc: "Una etiqueta genérica no conecta con tu consumidor ideal" },
-  { label: "Sin presencia", desc: "Sin digital no existes para quien te busca en línea" },
-  { label: "Sin tiempo", desc: "Coordinar 4 proveedores distintos te cuesta semanas y energía" },
+  { label: "Sin normativa",  desc: "Tu producto no puede venderse legalmente sin cumplir NOM-051" },
+  { label: "Sin identidad",  desc: "Una etiqueta genérica no conecta con tu consumidor ideal" },
+  { label: "Sin presencia",  desc: "Sin digital no existes para quien te busca en línea" },
+  { label: "Sin tiempo",     desc: "Coordinar 4 proveedores distintos te cuesta semanas y energía" },
 ];
 
 export default function ForWhom() {
   return (
-    <section className="py-28 bg-bg2 border-y border-border">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-28 relative overflow-hidden border-y border-white/[0.05]">
+      {/* Glass bg */}
+      <div className="absolute inset-0 bg-[rgba(17,17,17,0.6)] backdrop-blur-sm" />
+
+      {/* Ambient orb */}
+      <motion.div
+        className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(175,169,236,0.08) 0%, transparent 70%)", filter: "blur(60px)" }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
           variants={staggerContainer}
@@ -70,25 +81,25 @@ export default function ForWhom() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden mb-16"
+          className="grid md:grid-cols-3 gap-4 mb-16"
         >
           {profiles.map((p, i) => (
             <motion.div
               key={i}
-              variants={fadeUp}
-              className="bg-bg2 p-8 hover:bg-bg3 transition-colors group"
+              variants={fadeScale}
+              className="glass glass-hover rounded-xl p-8 group cursor-default"
             >
               <div className="text-3xl mb-4">{p.icon}</div>
               <div className="text-[9px] tracking-[2px] uppercase text-neon font-mono mb-1">
                 {p.subtitle}
               </div>
-              <h3 className="text-[18px] font-bold mb-3">{p.title}</h3>
+              <h3 className="text-[18px] font-bold mb-3 group-hover:text-neon transition-colors duration-400">{p.title}</h3>
               <p className="text-muted text-[13px] leading-relaxed mb-5">{p.description}</p>
               <div className="flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] tracking-[1px] uppercase px-2.5 py-1 rounded-sm bg-neon/10 text-neon border border-neon/20"
+                    className="text-[10px] tracking-[1px] uppercase px-2.5 py-1 rounded-sm bg-neon/[0.07] text-neon border border-neon/15 backdrop-blur-sm"
                   >
                     {tag}
                   </span>
@@ -108,17 +119,17 @@ export default function ForWhom() {
           <motion.div variants={fadeUp} className="text-[10px] tracking-[3px] uppercase text-muted font-mono mb-8">
             // El problema que resolvemos
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border rounded-xl overflow-hidden">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {painPoints.map((p, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="bg-bg p-6 hover:bg-bg2 transition-colors"
+                className="glass glass-hover rounded-xl p-6 group cursor-default"
               >
                 <div className="text-[10px] tracking-[2px] uppercase text-neon font-mono mb-2">
                   0{i + 1} /
                 </div>
-                <div className="text-[14px] font-semibold mb-2">{p.label}</div>
+                <div className="text-[14px] font-semibold mb-2 group-hover:text-neon transition-colors duration-400">{p.label}</div>
                 <p className="text-muted text-[12px] leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}

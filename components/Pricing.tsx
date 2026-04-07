@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { fadeUp, staggerContainer, WHATSAPP_URL } from "@/lib/motion";
+import { fadeUp, staggerContainer, fadeScale } from "@/lib/motion";
+import { WHATSAPP_URL } from "@/lib/motion";
 
 type Tab = "todos" | "lab" | "creativo" | "digital";
 
@@ -181,10 +182,10 @@ const packages: Record<Tab, Array<{
 };
 
 const tabs: { id: Tab; label: string }[] = [
-  { id: "todos", label: "Todos" },
-  { id: "lab", label: "Lab" },
+  { id: "todos",    label: "Todos" },
+  { id: "lab",      label: "Lab" },
   { id: "creativo", label: "Creativo" },
-  { id: "digital", label: "Digital" },
+  { id: "digital",  label: "Digital" },
 ];
 
 export default function Pricing() {
@@ -214,15 +215,15 @@ export default function Pricing() {
       </motion.div>
 
       {/* Tabs */}
-      <div className="inline-flex border border-border rounded-lg overflow-hidden mb-8">
+      <div className="inline-flex glass rounded-lg overflow-hidden mb-8 p-0.5 gap-0.5">
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-6 py-2.5 text-[11px] tracking-[1px] uppercase transition-all duration-200 border-r border-border last:border-r-0 ${
+            className={`px-6 py-2.5 text-[11px] tracking-[1px] uppercase transition-all duration-350 rounded-md ${
               tab === t.id
-                ? "bg-neon text-bg font-bold"
-                : "bg-bg2 text-muted hover:text-white"
+                ? "bg-neon text-bg font-bold shadow-[0_0_16px_rgba(198,241,53,0.25)]"
+                : "text-muted hover:text-white hover:bg-white/[0.04]"
             }`}
           >
             {t.label}
@@ -233,10 +234,10 @@ export default function Pricing() {
       {/* Cards */}
       <motion.div
         key={tab}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className={`grid gap-px bg-border border border-border rounded-xl overflow-hidden ${
+        initial={{ opacity: 0, y: 14, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={`grid gap-4 ${
           pkgs.length <= 2
             ? "md:grid-cols-2"
             : pkgs.length === 3
@@ -245,18 +246,24 @@ export default function Pricing() {
         }`}
       >
         {pkgs.map((pkg, i) => (
-          <div
+          <motion.div
             key={i}
-            className={`flex flex-col p-7 ${
-              pkg.star
-                ? "bg-bg3 border-t-2 border-t-neon"
-                : "bg-bg2 hover:bg-bg3 transition-colors"
+            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.07 }}
+            className={`flex flex-col p-7 rounded-xl glass glass-hover relative overflow-hidden group ${
+              pkg.star ? "border border-neon/25 shadow-[0_0_30px_rgba(198,241,53,0.07)]" : ""
             }`}
           >
+            {/* Star top accent */}
+            {pkg.star && (
+              <div className="absolute top-0 left-0 right-0 h-px border-beam" />
+            )}
+
             <div className="text-[9px] tracking-[2px] uppercase text-neon font-mono mb-3">
               {pkg.badge}
             </div>
-            <div className="text-[17px] font-bold mb-1">{pkg.name}</div>
+            <div className="text-[17px] font-bold mb-1 group-hover:text-neon transition-colors duration-400">{pkg.name}</div>
             <div className="text-[28px] font-bold text-neon font-mono my-3">{pkg.price}</div>
             <div className="text-[10px] text-muted tracking-[0.5px] mb-5">{pkg.sub}</div>
 
@@ -273,15 +280,15 @@ export default function Pricing() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-full text-center py-2.5 rounded text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-200 ${
+              className={`w-full text-center py-2.5 rounded text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-400 ${
                 pkg.star
-                  ? "bg-neon text-bg hover:bg-neon-dim"
-                  : "bg-transparent text-muted border border-border hover:border-neon/50 hover:text-neon"
+                  ? "bg-neon text-bg hover:shadow-[0_0_24px_rgba(198,241,53,0.35)] hover:scale-[1.02]"
+                  : "bg-transparent text-muted border border-white/[0.08] hover:border-neon/40 hover:text-neon hover:bg-neon/[0.04]"
               }`}
             >
               {pkg.cta}
             </a>
-          </div>
+          </motion.div>
         ))}
       </motion.div>
     </section>
