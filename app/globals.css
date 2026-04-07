@@ -15,15 +15,19 @@
   --muted: #888888;
   --lavender: #AFA9EC;
   --sky: #85B7EB;
+
+  /* Glass tokens */
+  --glass-bg: rgba(17, 17, 17, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-hover: rgba(198, 241, 53, 0.04);
+  --glow-sm: 0 0 20px rgba(198,241,53,0.08);
+  --glow-md: 0 0 40px rgba(198,241,53,0.12), 0 0 80px rgba(198,241,53,0.04);
+  --glow-lg: 0 0 80px rgba(198,241,53,0.18), 0 0 160px rgba(198,241,53,0.06);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -32,17 +36,14 @@ body {
   overflow-x: hidden;
 }
 
-::selection {
-  background: var(--neon);
-  color: #0A0A0A;
-}
+::selection { background: var(--neon); color: #0A0A0A; }
 
-/* Custom scrollbar */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--neon-dim); border-radius: 2px; }
 
-/* Grain overlay */
+/* ── Noise grain overlay ── */
 .grain::after {
   content: '';
   position: fixed;
@@ -50,82 +51,137 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
-/* Neon glow effects */
-.neon-glow {
-  box-shadow: 0 0 20px rgba(198, 241, 53, 0.15), 0 0 60px rgba(198, 241, 53, 0.05);
+/* ── Glassmorphism card ── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
 }
 
-.neon-text-glow {
-  text-shadow: 0 0 20px rgba(198, 241, 53, 0.5);
+.glass-hover {
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+.glass-hover:hover {
+  background: rgba(198, 241, 53, 0.03);
+  border-color: rgba(198, 241, 53, 0.18);
+  box-shadow: var(--glow-sm);
 }
 
-/* Grid background pattern */
+/* ── Neon glow ── */
+.neon-glow    { box-shadow: var(--glow-md); }
+.neon-glow-lg { box-shadow: var(--glow-lg); }
+.neon-text-glow { text-shadow: 0 0 30px rgba(198,241,53,0.55); }
+
+/* ── Ambient orbs (pseudo) ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.12;
+}
+
+/* ── Grid pattern ── */
 .grid-pattern {
-  background-image: 
-    linear-gradient(rgba(30, 30, 30, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30, 30, 30, 0.5) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 
-/* Dot pattern */
+/* ── Dot pattern ── */
 .dot-pattern {
-  background-image: radial-gradient(rgba(198, 241, 53, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(198,241,53,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Marquee animation */
+/* ── Marquee ── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 38s linear infinite;
   white-space: nowrap;
 }
 
-/* Pulse dot */
+/* ── Pulse dot ── */
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
 }
+.pulse-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
 
-.pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-/* Scan line effect */
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-/* Cursor blink */
+/* ── Cursor blink ── */
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50%       { opacity: 0; }
 }
-
 .cursor-blink::after {
   content: '_';
   animation: blink 1s step-end infinite;
   color: var(--neon);
 }
 
-/* Active nav link */
-.nav-link-active {
-  color: var(--neon);
+/* ── Shimmer for CTA buttons ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    115deg,
+    var(--neon) 0%,
+    #e8ff80 40%,
+    var(--neon) 60%,
+    var(--neon-dim) 100%
+  );
+  animation: shimmer 4s linear infinite;
 }
 
-/* Card hover state */
-.card-hover {
-  transition: border-color 0.3s ease, background 0.3s ease;
+/* ── Floating glow animation ── */
+@keyframes float-glow {
+  0%, 100% { opacity: 0.10; transform: scale(1);   }
+  50%       { opacity: 0.18; transform: scale(1.12); }
+}
+.float-glow { animation: float-glow 6s ease-in-out infinite; }
+
+/* ── Subtle border beam ── */
+@keyframes border-beam {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.border-beam {
+  background: linear-gradient(90deg, transparent, rgba(198,241,53,0.35), transparent);
+  background-size: 200% 100%;
+  animation: border-beam 3s linear infinite;
 }
 
-.card-hover:hover {
-  border-color: rgba(198, 241, 53, 0.3);
-  background: var(--bg3);
+/* ── Card with neon top line on hover ── */
+.card-neon-top {
+  border-top: 1px solid transparent;
+  transition: border-color 0.45s ease, background 0.45s ease, box-shadow 0.45s ease;
+}
+.card-neon-top:hover {
+  border-top-color: rgba(198,241,53,0.5);
+  box-shadow: 0 -2px 20px rgba(198,241,53,0.08);
+}
+
+/* ── Active nav link ── */
+.nav-link-active { color: var(--neon); }
+
+/* ── Smooth reveal utility ── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
