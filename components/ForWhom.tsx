@@ -55,7 +55,7 @@ function ArcGlow() {
 
 export default function ForWhom() {
   return (
-    <section className="py-28 relative overflow-hidden border-y border-white/[0.05]">
+    <section id="para-quien" aria-label="¿Para quién es Punto Alfa?" className="py-28 relative overflow-hidden border-y border-white/[0.05]">
       <div className="absolute inset-0 bg-[rgba(17,17,17,0.6)] backdrop-blur-sm" />
       <motion.div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(175,169,236,0.07) 0%, transparent 70%)", filter: "blur(60px)" }}

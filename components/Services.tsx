@@ -364,10 +364,14 @@ export default function Services() {
       </motion.div>
 
       {/* Tabs */}
-      <div className="flex gap-0 border border-border rounded-lg overflow-hidden mb-1 w-full md:w-auto md:inline-flex">
+      <div role="tablist" aria-label="Áreas de servicio" className="flex gap-0 border border-border rounded-lg overflow-hidden mb-1 w-full md:w-auto md:inline-flex">
         {arms.map((arm) => (
           <button
             key={arm.id}
+            role="tab"
+            aria-selected={active === arm.id}
+            aria-controls={`panel-${arm.id}`}
+            id={`tab-${arm.id}`}
             onClick={() => setActive(arm.id)}
             className={`flex-1 md:flex-none px-6 py-3 text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-200 border-r border-border last:border-r-0 ${
               active === arm.id
@@ -383,6 +387,9 @@ export default function Services() {
       {/* Active card */}
       <motion.div
         key={active}
+        role="tabpanel"
+        id={`panel-${active}`}
+        aria-labelledby={`tab-${active}`}
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}

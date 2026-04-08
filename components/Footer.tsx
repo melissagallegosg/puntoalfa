@@ -32,6 +32,7 @@ export default function Footer() {
                 src="/images/logo.jpg"
                 alt="Punto Alfa"
                 fill
+                sizes="32px"
                 className="object-contain"
                 style={{ mixBlendMode: "screen" }}
               />
@@ -60,9 +61,9 @@ export default function Footer() {
 
         {/* Servicios */}
         <div>
-          <div className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
+          <h3 className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
             Servicios
-          </div>
+          </h3>
           <ul className="flex flex-col gap-3">
             {services.map((s) => (
               <li key={s.label}>
@@ -79,9 +80,9 @@ export default function Footer() {
 
         {/* Paquetes */}
         <div>
-          <div className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
+          <h3 className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
             Paquetes
-          </div>
+          </h3>
           <ul className="flex flex-col gap-3">
             {paquetes.map((p) => (
               <li key={p.label}>
@@ -98,9 +99,9 @@ export default function Footer() {
 
         {/* Redes y contacto */}
         <div>
-          <div className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
+          <h3 className="text-[9px] tracking-[3px] uppercase text-neon font-mono mb-5">
             Contacto
-          </div>
+          </h3>
           <div className="flex flex-col gap-3">
             <a
               href={INSTAGRAM_URL}

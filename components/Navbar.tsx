@@ -78,8 +78,10 @@ export default function Navbar() {
           >
             <Image
               src="/images/logo.jpg"
-              alt="Punto Alfa"
+              alt="Punto Alfa — Agencia técnica para productos alimenticios"
               fill
+              priority
+              sizes="36px"
               className="object-contain"
               style={{ mixBlendMode: "screen" }}
             />
