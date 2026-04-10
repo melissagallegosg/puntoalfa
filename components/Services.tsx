@@ -32,11 +32,11 @@ const arms = [
     color: "lavender",
     accent: "#AFA9EC",
     description:
-      "Branding, diseño de etiqueta regulatoria y empaque. Identidad visual que conecta tu producto con el consumidor correcto.",
+      "Identidad visual y diseño de etiqueta regulatoria. Tu producto con la imagen correcta para vender desde el primer día.",
     services: [
-      "Branding básico (logo + paleta de colores + tipografía)",
-      "Branding de empaque (básico + diseño de etiqueta + mockups)",
-      "Archivos para imprenta listos",
+      "Identidad básica de marca (logo funcional + paleta de colores + tipografía)",
+      "Etiqueta + imagen de producto lista para venta (identidad + etiqueta estructurada + mockups)",
+      "Archivos listos para imprenta",
     ],
     price: "Desde $3,000 MXN",
     time: "1 semana",

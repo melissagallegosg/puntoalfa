@@ -43,7 +43,7 @@ const packages: Record<Tab, Array<{
       items: [
         "Tabla + sellos NOM-051",
         "Validación pre-impresión NOM-051",
-        "Branding de empaque (etiqueta + mockups)",
+        "Etiqueta + imagen de producto (etiqueta + mockups)",
       ],
       star: true,
       cta: "Solicitar",
