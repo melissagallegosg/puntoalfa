@@ -71,7 +71,7 @@ const packages: Record<Tab, Array<{
         "Estrategia de redes + contenido completo",
         "Automatizaciones básicas",
       ],
-      cta: "Cotizar",
+      cta: "Solicitar",
     },
   ],
   lab: [

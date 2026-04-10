@@ -18,8 +18,6 @@ const arms = [
       "Tabla nutrimental teórica NOM-051",
       "Sellos frontales de advertencia (octágonos)",
       "Validación pre-impresión NOM-051 (medidas, proporciones, normativa)",
-      "Consultoría de formulación de cero o análisis para reducir sellos",
-      "Evaluación de producto nuevo",
     ],
     price: "Desde $2,300 MXN",
     time: "2–3 días",
