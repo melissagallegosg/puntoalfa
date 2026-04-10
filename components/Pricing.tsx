@@ -7,12 +7,19 @@ import { WHATSAPP_URL } from "@/lib/motion";
 
 type Tab = "todos" | "lab" | "creativo" | "digital";
 
+type PkgItem = {
+  label: string;
+  sub?: string;
+  subitems?: string[];
+};
+
 const packages: Record<Tab, Array<{
   badge: string;
   name: string;
   price: string;
   sub: string;
-  items: string[];
+  description?: string;
+  items: (string | PkgItem)[];
   star?: boolean;
   cta: string;
 }>> = {
@@ -77,20 +84,12 @@ const packages: Record<Tab, Array<{
         "Tabla nutrimental teórica NOM-051",
         "Sellos frontales de advertencia",
         "PDF + PNG para etiqueta",
-      ],
-      star: true,
-      cta: "Solicitar",
-    },
-    {
-      badge: "// Alfa Lab",
-      name: "Validación pre-impresión NOM-051",
-      price: "$700",
-      sub: "MXN · 1 día",
-      items: [
+        "Validación pre-impresión NOM-051",
         "Revisión de medidas y proporciones",
         "Cumplimiento NOM-051 completo",
         "Cero errores antes de imprenta",
       ],
+      star: true,
       cta: "Solicitar",
     },
     {
@@ -109,26 +108,47 @@ const packages: Record<Tab, Array<{
   creativo: [
     {
       badge: "// Alfa Creativo",
-      name: "Branding básico",
+      name: "Identidad básica de marca",
       price: "$3,000",
       sub: "MXN · 2–3 días",
       items: [
-        "Logo profesional",
+        "Logo funcional (listo para usar)",
         "Paleta de colores",
-        "Tipografía de marca",
+        "Tipografía recomendada",
       ],
       cta: "Solicitar",
     },
     {
       badge: "// Más completo",
-      name: "Branding de empaque",
+      name: "Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
       sub: "MXN · 1 semana",
+      description: "Diseño completo de tu producto para que puedas vender desde el inicio sin errores comunes.",
       items: [
-        "Todo Branding básico",
-        "Diseño de etiqueta regulatoria",
-        "Mockups de producto",
-        "Archivos para imprenta listos",
+        {
+          label: "Identidad básica incluida",
+          sub: "Logo funcional, colores y tipografía",
+        },
+        {
+          label: "Diseño de etiqueta estructurado correctamente",
+          sub: "Conforme a criterios de normativa:",
+          subitems: [
+            "Información obligatoria organizada",
+            "Lista de ingredientes en orden correcto",
+            "Denominación adecuada del producto",
+            "Contenido neto en unidades correctas",
+            "Tabla nutrimental correctamente formateada",
+            "Determinación e integración de sellos con medidas correctas",
+          ],
+        },
+        {
+          label: "Mockups realistas",
+          sub: "Para presentación o venta",
+        },
+        {
+          label: "Archivos listos para imprenta",
+          sub: "Adaptados a tu envase y formato de impresión",
+        },
       ],
       star: true,
       cta: "Solicitar",
@@ -274,15 +294,48 @@ export default function Pricing() {
             </div>
             <div className="text-[17px] font-bold mb-1 group-hover:text-neon transition-colors duration-400">{pkg.name}</div>
             <div className="text-[28px] font-bold text-neon font-mono my-3">{pkg.price}</div>
-            <div className="text-[10px] text-muted tracking-[0.5px] mb-5">{pkg.sub}</div>
+            <div className="text-[10px] text-muted tracking-[0.5px] mb-3">{pkg.sub}</div>
 
-            <ul className="flex flex-col gap-2 flex-1 mb-6">
-              {pkg.items.map((item, j) => (
-                <li key={j} className="flex items-start gap-2 text-[12px] text-[#999]">
-                  <span className="text-neon font-mono flex-shrink-0 mt-0.5 text-[11px]">→</span>
-                  {item}
-                </li>
-              ))}
+            {pkg.description && (
+              <p className="text-[11px] text-muted/80 leading-relaxed mb-4 border-l-2 border-neon/30 pl-3">
+                {pkg.description}
+              </p>
+            )}
+
+            <ul className="flex flex-col gap-3 flex-1 mb-6">
+              {pkg.items.map((item, j) => {
+                if (typeof item === "string") {
+                  return (
+                    <li key={j} className="flex items-start gap-2 text-[12px] text-[#999]">
+                      <span className="text-neon font-mono flex-shrink-0 mt-0.5 text-[11px]">→</span>
+                      {item}
+                    </li>
+                  );
+                }
+                return (
+                  <li key={j} className="flex flex-col gap-1">
+                    <div className="flex items-start gap-2">
+                      <span className="text-neon font-mono flex-shrink-0 mt-0.5 text-[11px]">→</span>
+                      <div>
+                        <span className="text-[12px] text-[#ccc] font-semibold">{item.label}</span>
+                        {item.sub && (
+                          <p className="text-[11px] text-muted mt-0.5">{item.sub}</p>
+                        )}
+                        {item.subitems && (
+                          <ul className="mt-1.5 flex flex-col gap-1 pl-1">
+                            {item.subitems.map((s, k) => (
+                              <li key={k} className="flex items-start gap-1.5 text-[11px] text-muted">
+                                <span className="text-neon/50 font-mono flex-shrink-0 text-[10px] mt-0.5">·</span>
+                                {s}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
 
             <a
