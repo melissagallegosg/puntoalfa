@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { fadeUp, staggerContainer, fadeScale } from "@/lib/motion";
-import { WHATSAPP_URL } from "@/lib/motion";
+import { waUrl } from "@/lib/motion";
 
 type Tab = "todos" | "lab" | "creativo" | "digital";
 
@@ -22,6 +22,7 @@ const packages: Record<Tab, Array<{
   items: (string | PkgItem)[];
   star?: boolean;
   cta: string;
+  waMsg: string;
 }>> = {
   todos: [
     {
@@ -34,6 +35,7 @@ const packages: Record<Tab, Array<{
         "PDF + PNG para etiqueta",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Solo Lab* (Tabla nutrimental + sellos NOM-051 · $2,300 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Más solicitado",
@@ -47,6 +49,7 @@ const packages: Record<Tab, Array<{
       ],
       star: true,
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Inicio Producto* (NOM-051 + etiqueta + mockups · $5,000 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Lanzamiento",
@@ -59,6 +62,7 @@ const packages: Record<Tab, Array<{
         "Estrategia de redes + contenido inicial (12 posts, copy incluido)",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Lanzamiento* (NOM-051 + etiqueta + landing page + redes · $9,000 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Marca Completa",
@@ -72,6 +76,7 @@ const packages: Record<Tab, Array<{
         "Automatizaciones básicas",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Marca Completa* (lanzamiento completo + identidad + automatizaciones · $12,000 MXN). ¿Me pueden dar más información?",
     },
   ],
   lab: [
@@ -91,6 +96,7 @@ const packages: Record<Tab, Array<{
       ],
       star: true,
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Tabla nutrimental + sellos NOM-051* (incluye validación pre-impresión · $2,300 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Lab",
@@ -103,6 +109,7 @@ const packages: Record<Tab, Array<{
         "Evaluación de producto nuevo",
       ],
       cta: "Cotizar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa cotizar una *Consultoría de formulación o reducción de sellos*. ¿Me pueden dar más información y un precio estimado?",
     },
   ],
   creativo: [
@@ -117,6 +124,7 @@ const packages: Record<Tab, Array<{
         "Tipografía recomendada",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Identidad básica de marca* (logo + paleta + tipografía · $3,000 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Más completo",
@@ -152,6 +160,7 @@ const packages: Record<Tab, Array<{
       ],
       star: true,
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Etiqueta + imagen de producto lista para venta* (identidad + etiqueta regulatoria + mockups · $5,000 MXN). ¿Me pueden dar más información?",
     },
   ],
   digital: [
@@ -166,6 +175,7 @@ const packages: Record<Tab, Array<{
         "Integración con redes sociales",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Landing page de producto* (con botón WhatsApp + integración a redes · $4,000 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Digital",
@@ -178,6 +188,7 @@ const packages: Record<Tab, Array<{
         "Copy incluido",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Redes + contenido inicial* (12 posts mensuales + diseño + copy · $2,500 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Más completo",
@@ -194,6 +205,7 @@ const packages: Record<Tab, Array<{
       ],
       star: true,
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Redes + contenido completo* (12 posts + reels + imágenes + bot WhatsApp · $6,000 MXN/mes). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Digital",
@@ -206,6 +218,7 @@ const packages: Record<Tab, Array<{
         "CRM básico incluido",
       ],
       cta: "Solicitar",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Bot WhatsApp 24/7* (atención automática + flujos personalizados + CRM · $2,000 MXN). ¿Me pueden dar más información?",
     },
   ],
 };
@@ -339,7 +352,7 @@ export default function Pricing() {
             </ul>
 
             <a
-              href={WHATSAPP_URL}
+              href={waUrl(pkg.waMsg)}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full text-center py-2.5 rounded text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-400 ${

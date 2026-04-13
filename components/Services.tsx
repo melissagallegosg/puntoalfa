@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { fadeUp, staggerContainer, WHATSAPP_URL } from "@/lib/motion";
+import { fadeUp, staggerContainer, WHATSAPP_URL, waUrl } from "@/lib/motion";
 
 const arms = [
   {
@@ -21,6 +21,7 @@ const arms = [
     ],
     price: "Desde $2,300 MXN",
     time: "2–3 días",
+    waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa Lab* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
   },
   {
     id: "creativo",
@@ -38,6 +39,7 @@ const arms = [
     ],
     price: "Desde $3,000 MXN",
     time: "1 semana",
+    waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa Creativo* (identidad de marca + diseño de etiqueta). ¿Me pueden orientar sobre qué servicio necesito?",
   },
   {
     id: "digital",
@@ -57,6 +59,7 @@ const arms = [
     ],
     price: "Desde $2,000 MXN",
     time: "5–7 días",
+    waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa Digital* (landing page, redes o bot WhatsApp). ¿Me pueden orientar sobre qué servicio necesito?",
   },
 ];
 
@@ -438,7 +441,7 @@ export default function Services() {
           </div>
 
           <a
-            href={WHATSAPP_URL}
+            href={waUrl(activeArm.waMsg)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-neon text-bg text-[12px] font-bold tracking-[1px] uppercase px-6 py-3 rounded hover:bg-neon-dim transition-colors"
