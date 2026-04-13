@@ -98,7 +98,14 @@ export const clipReveal: Variants = {
   },
 };
 
+const WA_NUMBER = "528125970372";
+
 export const WHATSAPP_URL =
-  "https://wa.me/521XXXXXXXXXX?text=Hola%20Punto%20Alfa%2C%20me%20interesa%20cotizar%20un%20servicio";
+  `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola Punto Alfa, me interesa cotizar un servicio.")}`;
+
 export const INSTAGRAM_URL = "https://www.instagram.com/puntoalfamx";
 export const FACEBOOK_URL  = "https://www.facebook.com/puntoalfamx";
+
+export function waUrl(mensaje: string): string {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+}
