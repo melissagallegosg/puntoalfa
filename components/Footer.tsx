@@ -16,7 +16,6 @@ const services = [
 const paquetes = [
   { label: "Solo Lab — $2,300 MXN", href: "#paquetes" },
   { label: "Inicio Producto — $5,000 MXN", href: "#paquetes" },
-  { label: "Lanzamiento — $9,000 MXN", href: "#paquetes" },
   { label: "Marca Completa — $12,000 MXN", href: "#paquetes" },
 ];
 
@@ -144,7 +143,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-border px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
         <span className="text-[10px] tracking-[1.5px] uppercase text-muted/50 font-mono">
-          © 2025 <span className="text-neon/70">Punto Alfa</span> · Todos los derechos reservados
+          © {new Date().getFullYear()} <span className="text-neon/70">Punto Alfa</span> · Todos los derechos reservados
         </span>
         <span className="text-[10px] tracking-[1.5px] uppercase text-muted/40 font-mono">
           Monterrey, Nuevo León · México

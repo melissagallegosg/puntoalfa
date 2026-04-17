@@ -261,15 +261,16 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa Digital",
       name: "Bot WhatsApp 24/7",
-      price: "$2,000",
+      price: "$3,000",
       sub: "MXN · 5–7 días",
       items: [
-        "Atención automática 24/7",
-        "Flujos personalizados",
+        "Responde precios, horarios y ubicación",
+        "500 mensajes / mes incluidos",
+        "Flujos personalizados para tu negocio",
         "CRM básico incluido",
       ],
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Bot WhatsApp 24/7* (atención automática + flujos personalizados + CRM · $2,000 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Bot WhatsApp 24/7* (500 mensajes/mes + flujos personalizados + CRM · $3,000 MXN). ¿Me pueden dar más información?",
     },
   ],
 };

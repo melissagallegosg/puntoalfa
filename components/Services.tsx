@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fadeUp, staggerContainer, WHATSAPP_URL, waUrl } from "@/lib/motion";
 
 const arms = [
@@ -341,6 +341,23 @@ export default function Services() {
   const [labOpen, setLabOpen] = useState(false);
   const activeArm = arms.find((a) => a.id === active)!;
 
+  // Sync tab with URL hash — enables nav anchors (#lab, #creativo, #digital) to activate the correct tab
+  useEffect(() => {
+    const syncFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (arms.some((a) => a.id === hash)) {
+        setActive(hash);
+        // Small delay so the section has scrolled into view before opening
+        setTimeout(() => {
+          document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+      }
+    };
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, []);
+
   return (
     <section id="servicios" className="py-28 max-w-7xl mx-auto px-6">
       {/* Header */}
@@ -484,15 +501,26 @@ export default function Services() {
           >
             <button
               onClick={() => setLabOpen(!labOpen)}
-              className="flex items-center gap-2 text-[11px] tracking-[1.5px] uppercase text-muted hover:text-neon transition-colors duration-200"
+              className={`flex items-center gap-3 w-full text-left px-5 py-3.5 rounded-lg border transition-all duration-300 group ${
+                labOpen
+                  ? "border-neon/30 bg-neon/5 text-neon"
+                  : "border-border bg-bg2 text-muted hover:border-neon/25 hover:text-white hover:bg-neon/[0.03]"
+              }`}
             >
               <span
-                className="inline-block transition-transform duration-300 font-mono text-neon"
+                className={`inline-block transition-transform duration-300 font-mono flex-shrink-0 ${labOpen ? "text-neon" : "text-muted group-hover:text-neon"}`}
                 style={{ transform: labOpen ? "rotate(90deg)" : "rotate(0deg)" }}
               >
                 →
               </span>
-              {labOpen ? "Cerrar info técnica" : "Saber más sobre la tabla nutrimental teórica"}
+              <span className="text-[11px] tracking-[1.5px] uppercase font-semibold">
+                {labOpen ? "Cerrar info técnica" : "Ver toda la info técnica — proceso, base legal y requisitos"}
+              </span>
+              {!labOpen && (
+                <span className="ml-auto text-[9px] tracking-[1px] uppercase font-mono text-neon/60 border border-neon/20 rounded px-2 py-0.5 flex-shrink-0">
+                  NOM-051
+                </span>
+              )}
             </button>
 
             <AnimatePresence>

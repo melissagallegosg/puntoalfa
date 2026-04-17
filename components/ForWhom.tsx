@@ -126,6 +126,30 @@ export default function ForWhom() {
             ))}
           </div>
         </motion.div>
+
+        {/* Mid-page CTA — visible on all screens, critical for mobile conversion */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="#paquetes"
+            className="inline-flex items-center gap-2 bg-neon text-bg text-[12px] font-bold tracking-[1px] uppercase px-8 py-3.5 rounded hover:bg-neon-dim transition-colors w-full sm:w-auto justify-center"
+          >
+            Ver precios →
+          </a>
+          <a
+            href="https://wa.me/528125970372?text=Hola%20Punto%20Alfa%20%F0%9F%91%8B%20Quiero%20saber%20qu%C3%A9%20servicio%20necesito%20para%20mi%20producto."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-border text-muted text-[12px] font-semibold tracking-[1px] uppercase px-8 py-3.5 rounded hover:border-neon/30 hover:text-white transition-colors w-full sm:w-auto justify-center"
+          >
+            Hablar con un asesor
+          </a>
+        </motion.div>
       </div>
     </section>
   );
