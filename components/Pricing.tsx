@@ -267,7 +267,6 @@ const packages: Record<Tab, Array<{
         "Responde precios, horarios y ubicación",
         "500 mensajes / mes incluidos",
         "Flujos personalizados para tu negocio",
-        "CRM básico incluido",
       ],
       cta: "Solicitar",
       waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Bot WhatsApp 24/7* (500 mensajes/mes + flujos personalizados + CRM · $3,000 MXN). ¿Me pueden dar más información?",
