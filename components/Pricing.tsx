@@ -44,12 +44,15 @@ const packages: Record<Tab, Array<{
       waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Tabla nutrimental + sellos NOM-051* (incluye validación pre-impresión · $2,300 MXN). ¿Me pueden dar más información?",
     },
     {
-      badge: "// Más solicitado",
+      badge: "// Alfa Creativo",
       name: "Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
       sub: "MXN · 1 semana",
       items: [
-        "Tabla nutrimental + sellos NOM-051",
+        {
+          label: "Tabla nutrimental + sellos NOM-051",
+          sub: "Cumplimiento normativo completo antes de imprenta",
+        },
         {
           label: "Identidad básica incluida",
           sub: "Logo funcional, colores y tipografía",
@@ -75,18 +78,20 @@ const packages: Record<Tab, Array<{
           sub: "Adaptados a tu envase y formato de impresión",
         },
       ],
-      star: true,
       cta: "Solicitar",
       waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Etiqueta + imagen de producto lista para venta* (NOM-051 + identidad + etiqueta + mockups · $5,000 MXN). ¿Me pueden dar más información?",
     },
     {
-      badge: "// Marca Completa",
+      badge: "// Más solicitado",
       name: "Marca Completa",
       price: "$12,000",
       sub: "MXN · 3–4 semanas · Un solo equipo",
       description: "Convierte tu producto en una marca lista para vender.",
       items: [
-        "Tabla nutrimental + sellos NOM-051",
+        {
+          label: "Tabla nutrimental + sellos NOM-051",
+          sub: "Cumplimiento normativo completo antes de imprenta",
+        },
         {
           label: "Identidad básica incluida",
           sub: "Logo funcional, colores y tipografía",
@@ -111,9 +116,16 @@ const packages: Record<Tab, Array<{
           label: "Archivos listos para imprenta",
           sub: "Adaptados a tu envase y formato de impresión",
         },
-        "Landing page + botón WhatsApp activa desde el día 1",
-        "Estrategia de redes + contenido inicial: 12 posts con copy incluido",
+        {
+          label: "Landing page + botón WhatsApp",
+          sub: "Tu producto visible en internet desde el día 1, con contacto directo al cliente",
+        },
+        {
+          label: "Estrategia de redes + contenido inicial: 12 posts con copy incluido",
+          sub: "Publicaciones listas para subir, con texto redactado para conectar con tu cliente ideal",
+        },
       ],
+      star: true,
       cta: "Solicitar",
       waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Marca Completa* (NOM-051 + identidad + etiqueta + landing page + redes · $12,000 MXN). ¿Me pueden dar más información?",
     },
@@ -369,7 +381,7 @@ export default function Pricing() {
                     <div className="flex items-start gap-2">
                       <span className="text-neon font-mono flex-shrink-0 mt-0.5 text-[11px]">→</span>
                       <div>
-                        <span className="text-[12px] text-[#ccc] font-semibold">{item.label}</span>
+                        <span className="text-[12px] text-white font-bold">{item.label}</span>
                         {item.sub && (
                           <p className="text-[11px] text-muted mt-0.5">{item.sub}</p>
                         )}
