@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Punto Alfa",
     title: "Punto Alfa — De la receta al mercado",
     description:
-      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y estrategia digital en un solo equipo. Monterrey, México.",
+      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y estrategia digital en un solo equipo. México.",
     locale: "es_MX",
     images: [
       {
