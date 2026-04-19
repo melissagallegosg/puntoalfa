@@ -42,7 +42,6 @@ export default function Footer() {
             Ciencia · Diseño · Estrategia para emprendedores de la industria alimentaria.
           </p>
           <div className="text-[10px] tracking-[1.5px] uppercase text-muted/60 font-mono mb-4">
-            Monterrey, México
           </div>
           <a
             href={WHATSAPP_URL}
