@@ -7,7 +7,7 @@ import { fadeUp, staggerContainer, WHATSAPP_URL, waUrl } from "@/lib/motion";
 const arms = [
   {
     id: "lab",
-    tag: "Alfa Lab",
+    tag: "Alfa NOM",
     name: "Ciencia y normativa",
     icon: "⬡",
     color: "neon",
@@ -19,9 +19,9 @@ const arms = [
       "Sellos frontales de advertencia (octágonos)",
       "Validación pre-impresión NOM-051 (medidas, proporciones, normativa)",
     ],
-    price: "Desde $2,300 MXN",
+    price: "$2,300 MXN",
     time: "2–3 días",
-    waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa Lab* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
+    waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa NOM* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
   },
   {
     id: "creativo",
@@ -184,7 +184,6 @@ function LabExpandable() {
 
   return (
     <div className="mt-4 border border-neon/20 rounded-lg overflow-hidden bg-bg">
-      {/* Sub-tabs */}
       <div className="flex border-b border-border overflow-x-auto">
         {labTabs.map((t) => (
           <button
@@ -210,7 +209,6 @@ function LabExpandable() {
           transition={{ duration: 0.25 }}
           className="p-6"
         >
-          {/* PROBLEMA */}
           {labTab === "problema" && (
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -242,7 +240,6 @@ function LabExpandable() {
             </div>
           )}
 
-          {/* PROCESO */}
           {labTab === "proceso" && (
             <div>
               <p className="text-muted text-[12px] mb-5">
@@ -262,7 +259,6 @@ function LabExpandable() {
             </div>
           )}
 
-          {/* BASE LEGAL */}
           {labTab === "legal" && (
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -293,7 +289,6 @@ function LabExpandable() {
             </div>
           )}
 
-          {/* REQUISITOS */}
           {labTab === "requisitos" && (
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -331,22 +326,85 @@ function LabExpandable() {
           )}
         </motion.div>
       </AnimatePresence>
+
+      <div className="px-6 py-4 border-t border-border flex items-center gap-2">
+        <span className="text-neon font-mono text-[11px]">→</span>
+        <a
+          href="#preguntas-frecuentes"
+          className="text-[11px] text-neon/70 hover:text-neon underline underline-offset-2 transition-colors duration-200"
+        >
+          ¿Por qué el cálculo teórico es legal? Ver base normativa →
+        </a>
+      </div>
+    </div>
+  );
+}
+
+// Collapsible for Creativo service list
+function CreativoExpandable({ services }: { services: string[] }) {
+  const [open, setOpen] = useState(false);
+  const preview = services[0];
+  const rest = services.slice(1);
+
+  return (
+    <div>
+      <ul className="flex flex-col gap-4">
+        <motion.li
+          initial={{ opacity: 0, x: 12 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-start gap-3 text-[13px] text-[#ccc]"
+        >
+          <span className="text-lavender font-mono mt-0.5 flex-shrink-0" style={{ color: "#AFA9EC" }}>→</span>
+          {preview}
+        </motion.li>
+
+        <AnimatePresence>
+          {open && rest.map((svc, i) => (
+            <motion.li
+              key={i}
+              initial={{ opacity: 0, height: 0, y: -4 }}
+              animate={{ opacity: 1, height: "auto", y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -4 }}
+              transition={{ duration: 0.3, delay: i * 0.06 }}
+              className="flex items-start gap-3 text-[13px] text-[#ccc] overflow-hidden"
+            >
+              <span className="font-mono mt-0.5 flex-shrink-0" style={{ color: "#AFA9EC" }}>→</span>
+              {svc}
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </ul>
+
+      <button
+        onClick={() => setOpen(!open)}
+        className="mt-5 flex items-center gap-2 text-[11px] tracking-[1px] uppercase font-semibold transition-colors duration-200 group"
+        style={{ color: open ? "#AFA9EC" : "#666" }}
+      >
+        <motion.span
+          animate={{ rotate: open ? 90 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="font-mono"
+          style={{ color: "#AFA9EC" }}
+        >
+          →
+        </motion.span>
+        {open ? "Ver menos" : `Ver ${rest.length} servicios más`}
+      </button>
     </div>
   );
 }
 
 export default function Services() {
-  const [active, setActive] = useState("lab");
+  const [active, setActive] = useState<string | null>(null);
   const [labOpen, setLabOpen] = useState(false);
-  const activeArm = arms.find((a) => a.id === active)!;
+  const activeArm = arms.find((a) => a.id === active);
 
-  // Sync tab with URL hash — enables nav anchors (#lab, #creativo, #digital) to activate the correct tab
   useEffect(() => {
     const syncFromHash = () => {
       const hash = window.location.hash.replace("#", "");
       if (arms.some((a) => a.id === hash)) {
         setActive(hash);
-        // Small delay so the section has scrolled into view before opening
+        setLabOpen(false);
         setTimeout(() => {
           document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" });
         }, 50);
@@ -359,7 +417,6 @@ export default function Services() {
 
   return (
     <section id="servicios" className="py-28 max-w-7xl mx-auto px-6">
-      {/* Header */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -380,115 +437,151 @@ export default function Services() {
         </motion.p>
       </motion.div>
 
-      {/* Tabs */}
-      <div role="tablist" aria-label="Áreas de servicio" className="flex gap-0 border border-border rounded-lg overflow-hidden mb-1 w-full md:w-auto md:inline-flex">
-        {arms.map((arm) => (
-          <button
-            key={arm.id}
-            role="tab"
-            aria-selected={active === arm.id}
-            aria-controls={`panel-${arm.id}`}
-            id={`tab-${arm.id}`}
-            onClick={() => setActive(arm.id)}
-            className={`flex-1 md:flex-none px-6 py-3 text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-200 border-r border-border last:border-r-0 ${
-              active === arm.id
-                ? "bg-neon text-bg"
-                : "bg-bg2 text-muted hover:text-white"
-            }`}
-          >
-            {arm.tag}
-          </button>
-        ))}
+      {/* 3 cards — click abre/cierra el panel de esa área */}
+      <div className="grid md:grid-cols-3 gap-3 mb-4">
+        {arms.map((arm) => {
+          const isOpen = active === arm.id;
+          return (
+            <button
+              key={arm.id}
+              onClick={() => {
+                setActive(isOpen ? null : arm.id);
+                setLabOpen(false);
+              }}
+              className="text-left p-4 rounded-xl border transition-all duration-300 group"
+              style={{
+                background: isOpen ? `${arm.accent}08` : "rgba(255,255,255,0.02)",
+                borderColor: isOpen ? `${arm.accent}30` : "rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="text-[9px] tracking-[2px] uppercase font-mono" style={{ color: arm.accent }}>
+                  {arm.tag}
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="text-[13px] font-bold font-mono" style={{ color: arm.accent }}>
+                    {arm.price}
+                  </div>
+                  <motion.span
+                    animate={{ rotate: isOpen ? 90 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="font-mono text-[11px]"
+                    style={{ color: arm.accent }}
+                  >
+                    →
+                  </motion.span>
+                </div>
+              </div>
+              <div className="text-[13px] font-semibold mb-1 text-white/90 group-hover:text-white transition-colors">
+                {arm.name}
+              </div>
+              <div className="text-[11px] text-muted leading-relaxed">
+                {arm.id === "lab" && "Tabla NOM-051 + sellos · Entrega en 2–3 días"}
+                {arm.id === "creativo" && "Etiqueta + identidad visual lista para venta"}
+                {arm.id === "digital" && "Landing page + redes + automatizaciones"}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Active card */}
-      <motion.div
-        key={active}
-        role="tabpanel"
-        id={`panel-${active}`}
-        aria-labelledby={`tab-${active}`}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="grid md:grid-cols-2 border border-border rounded-lg overflow-hidden"
-      >
-        {/* Left info */}
-        <div
-          id={activeArm.id}
-          className="bg-bg2 p-8 md:p-10 border-b md:border-b-0 md:border-r border-border"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <div
-              className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-2xl bg-bg"
-              style={{ borderColor: `${activeArm.accent}20` }}
-            >
-              {activeArm.icon}
-            </div>
-            <div>
-              <div
-                className="text-[9px] tracking-[2px] uppercase font-mono mb-1"
-                style={{ color: activeArm.accent }}
-              >
-                {activeArm.tag}
-              </div>
-              <div className="text-[18px] font-bold">{activeArm.name}</div>
-            </div>
-          </div>
-
-          <p className="text-muted text-[14px] leading-relaxed mb-8">
-            {activeArm.description}
-          </p>
-
-          <div className="flex items-center gap-6 mb-8">
-            <div>
-              <div className="text-[10px] tracking-[2px] uppercase text-muted mb-1">Precio</div>
-              <div
-                className="text-xl font-bold font-mono"
-                style={{ color: activeArm.accent }}
-              >
-                {activeArm.price}
-              </div>
-            </div>
-            <div className="w-px h-10 bg-border" />
-            <div>
-              <div className="text-[10px] tracking-[2px] uppercase text-muted mb-1">Entrega</div>
-              <div className="text-xl font-bold font-mono text-white">{activeArm.time}</div>
-            </div>
-          </div>
-
-          <a
-            href={waUrl(activeArm.waMsg)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-neon text-bg text-[12px] font-bold tracking-[1px] uppercase px-6 py-3 rounded hover:bg-neon-dim transition-colors"
+      {/* Panel desplegable — se muestra solo cuando hay un área activa */}
+      <AnimatePresence mode="wait">
+        {activeArm && (
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="overflow-hidden"
           >
-            Cotizar este servicio →
-          </a>
-        </div>
-
-        {/* Right: service list */}
-        <div className="bg-bg3 p-8 md:p-10">
-          <div className="text-[10px] tracking-[3px] uppercase text-muted font-mono mb-6">
-            // Incluye
-          </div>
-          <ul className="flex flex-col gap-4">
-            {activeArm.services.map((svc, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07 }}
-                className="flex items-start gap-3 text-[13px] text-[#ccc]"
+            <div
+              role="tabpanel"
+              id={`panel-${active}`}
+              className="grid md:grid-cols-2 border border-border rounded-lg overflow-hidden mt-1"
+            >
+              {/* Left info */}
+              <div
+                id={activeArm.id}
+                className="bg-bg2 p-8 md:p-10 border-b md:border-b-0 md:border-r border-border"
               >
-                <span className="text-neon font-mono mt-0.5 flex-shrink-0">→</span>
-                {svc}
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-lg border border-border flex items-center justify-center text-2xl bg-bg"
+                    style={{ borderColor: `${activeArm.accent}20` }}
+                  >
+                    {activeArm.icon}
+                  </div>
+                  <div>
+                    <div
+                      className="text-[9px] tracking-[2px] uppercase font-mono mb-1"
+                      style={{ color: activeArm.accent }}
+                    >
+                      {activeArm.tag}
+                    </div>
+                    <div className="text-[18px] font-bold">{activeArm.name}</div>
+                  </div>
+                </div>
 
-      {/* Expandable "Saber más" — solo para Lab */}
+                <p className="text-muted text-[14px] leading-relaxed mb-8">
+                  {activeArm.description}
+                </p>
+
+                <div className="flex items-center gap-6 mb-8">
+                  <div>
+                    <div className="text-[10px] tracking-[2px] uppercase text-muted mb-1">Precio</div>
+                    <div className="text-xl font-bold font-mono" style={{ color: activeArm.accent }}>
+                      {activeArm.price}
+                    </div>
+                  </div>
+                  <div className="w-px h-10 bg-border" />
+                  <div>
+                    <div className="text-[10px] tracking-[2px] uppercase text-muted mb-1">Entrega</div>
+                    <div className="text-xl font-bold font-mono text-white">{activeArm.time}</div>
+                  </div>
+                </div>
+
+                <a
+                  href={waUrl(activeArm.waMsg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-neon text-bg text-[12px] font-bold tracking-[1px] uppercase px-6 py-3 rounded hover:bg-neon-dim transition-colors"
+                >
+                  Cotizar este servicio →
+                </a>
+              </div>
+
+              {/* Right: service list */}
+              <div className="bg-bg3 p-8 md:p-10">
+                <div className="text-[10px] tracking-[3px] uppercase text-muted font-mono mb-6">
+                  // Incluye
+                </div>
+                {active === "creativo" ? (
+                  <CreativoExpandable services={activeArm.services} />
+                ) : (
+                  <ul className="flex flex-col gap-4">
+                    {activeArm.services.map((svc, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.07 }}
+                        className="flex items-start gap-3 text-[13px] text-[#ccc]"
+                      >
+                        <span className="text-neon font-mono mt-0.5 flex-shrink-0">→</span>
+                        {svc}
+                      </motion.li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Expandable for Lab */}
       <AnimatePresence>
         {active === "lab" && (
           <motion.div
@@ -539,7 +632,6 @@ export default function Services() {
         )}
       </AnimatePresence>
 
-      {/* Sub-section anchors */}
       <div className="hidden">
         <div id="lab" /><div id="creativo" /><div id="digital" />
       </div>

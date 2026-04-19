@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Punto Alfa",
     title: "Punto Alfa — De la receta al mercado",
     description:
-      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y estrategia digital en un solo equipo. México.",
+      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y estrategia digital en un solo equipo.",
     locale: "es_MX",
     images: [
       {
@@ -88,6 +89,18 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans bg-bg text-white antialiased grain`}
       >
+        {/* Aurora Background */}
+        <div className="aurora-bg" />
+
+        {/* Gradient Orbs */}
+        <div className="gradient-orb orb-1" />
+        <div className="gradient-orb orb-2" />
+        <div className="gradient-orb orb-3" />
+
+        {/* Particles Container */}
+        <div className="particles-container" id="particles" />
+        <ParticleBackground />
+
         {children}
       </body>
     </html>

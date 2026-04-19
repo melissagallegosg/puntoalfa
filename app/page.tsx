@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import ForWhom from "@/components/ForWhom";
 import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
 import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
 import FloatingWA from "@/components/FloatingWA";
@@ -19,8 +20,8 @@ const jsonLd = {
   logo: "https://www.puntoalfamx.com/images/logo.jpg",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "",
-    addressRegion: "",
+    addressLocality: "México",
+    addressRegion: "MX",
     addressCountry: "MX",
   },
   areaServed: {
@@ -78,6 +79,7 @@ export default function Home() {
         <ForWhom />
         <Process />
         <Pricing />
+        <FAQ />
         <CTABand />
       </main>
       <Footer />

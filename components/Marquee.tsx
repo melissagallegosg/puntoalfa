@@ -3,18 +3,15 @@
 import { motion } from "framer-motion";
 
 const items = [
-  "NOM-051",
-  "Tabla Nutrimental",
-  "Sellos de Advertencia",
-  "Diseño de Etiqueta",
-  "Landing Page",
-  "WhatsApp Bot",
-  "Branding de Empaque",
-  "Marketplace Setup",
-  "Validación Pre-impresión",
-  "Estrategia Digital",
-  "Food Startups",
-  "Marcas Artesanales",
+  "72h de entrega promedio",
+  "0 rechazos en imprenta",
+  "NOM-051 cumplimiento completo",
+
+  "Sin muestras físicas",
+  "Entrega por WhatsApp",
+  "Cálculo teórico 100% legal",
+  "Sin análisis de laboratorio",
+  "Archivos PDF + PNG listos para imprenta",
 ];
 
 export default function Marquee() {
