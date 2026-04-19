@@ -19,8 +19,8 @@ const jsonLd = {
   logo: "https://www.puntoalfamx.com/images/logo.jpg",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Monterrey",
-    addressRegion: "Nuevo León",
+    addressLocality: "",
+    addressRegion: "",
     addressCountry: "MX",
   },
   areaServed: {
