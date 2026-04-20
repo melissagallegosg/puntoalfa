@@ -52,9 +52,9 @@ const arms = [
       "Landing page, redes sociales y automatizaciones. Tu marca activa 24/7 desde el día del lanzamiento.",
     services: [
       "Landing page de producto + botón WhatsApp integrado + integración con redes",
-      "Estrategia de redes + contenido inicial (12 posts estáticos, copy incluido)",
+      "Estrategia de redes + contenido inicial (15 posts estáticos, copy incluido · entrega 5 días)",
       "Estrategia de redes completa (12 posts + 2 reels + 10 imágenes de producto, copy incluido)",
-      "Bot WhatsApp 24/7 con flujos personalizados",
+      "Bot WhatsApp 24/7 con flujos personalizados ($3,000 MXN/mes)",
     ],
     price: "Desde $2,500 MXN",
     time: "5–7 días",

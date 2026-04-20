@@ -18,6 +18,7 @@ const packages: Record<Tab, Array<{
   name: string;
   price: string;
   sub: string;
+  deliveryTime: string;
   description?: string;
   items: (string | PkgItem)[];
   star?: boolean;
@@ -29,7 +30,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
       price: "$2,300",
-      sub: "MXN · 2–3 días",
+      sub: "MXN",
+      deliveryTime: "2–3 días hábiles",
       description: "Evita errores regulatorios desde el inicio.",
       items: [
         "Tabla nutrimental teórica NOM-051",
@@ -47,7 +49,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa Creativo",
       name: "Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
-      sub: "MXN · 1 semana",
+      sub: "MXN",
+      deliveryTime: "1 semana",
       items: [
         {
           label: "Tabla nutrimental + sellos NOM-051",
@@ -84,8 +87,9 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Más solicitado",
       name: "Marca Completa",
-      price: "$12,000",
-      sub: "MXN · 3–4 semanas · Un solo equipo",
+      price: "$11,000",
+      sub: "MXN · Un solo equipo",
+      deliveryTime: "3–4 semanas",
       description: "Convierte tu producto en una marca lista para vender.",
       items: [
         {
@@ -121,17 +125,13 @@ const packages: Record<Tab, Array<{
           sub: "Tu producto visible en internet desde el día 1, con contacto directo al cliente",
         },
         {
-          label: "Estrategia de redes + contenido inicial: 12 posts con copy incluido",
+          label: "Estrategia de redes + contenido inicial: 15 posts con copy incluido",
           sub: "Publicaciones listas para subir, con texto redactado para conectar con tu cliente ideal",
-        },
-        {
-          label: "Bot WhatsApp 24/7",
-          sub: "Automatiza la atención a clientes con flujos personalizados. Tu marca responde sola, todo el día.",
         },
       ],
       star: true,
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Marca Completa* (NOM-051 + identidad + etiqueta + landing page + redes + bot WhatsApp · $12,000 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Marca Completa* (NOM-051 + identidad + etiqueta + landing page + 15 posts · $11,000 MXN). ¿Me pueden dar más información?",
     },
   ],
   lab: [
@@ -139,7 +139,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
       price: "$2,300",
-      sub: "MXN · 2–3 días",
+      sub: "MXN",
+      deliveryTime: "2–3 días hábiles",
       items: [
         "Tabla nutrimental teórica NOM-051",
         "Sellos frontales de advertencia",
@@ -158,6 +159,7 @@ const packages: Record<Tab, Array<{
       name: "Consultoría de formulación o reducción de sellos",
       price: "A cotizar",
       sub: "Variable según producto",
+      deliveryTime: "A convenir",
       items: [
         "Formulación de producto desde cero",
         "Análisis para reducir octágonos",
@@ -172,7 +174,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa Creativo",
       name: "Identidad básica de marca",
       price: "$3,000",
-      sub: "MXN · 2–3 días",
+      sub: "MXN",
+      deliveryTime: "2–3 días hábiles",
       items: [
         "Logo funcional (listo para usar)",
         "Paleta de colores",
@@ -185,7 +188,8 @@ const packages: Record<Tab, Array<{
       badge: "// Más completo",
       name: "Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
-      sub: "MXN · 1 semana",
+      sub: "MXN",
+      deliveryTime: "1 semana",
       description: "Diseño completo de tu producto para que puedas vender desde el inicio sin errores comunes.",
       items: [
         {
@@ -223,7 +227,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa Digital",
       name: "Landing page de producto",
       price: "$4,000",
-      sub: "MXN · 5–7 días",
+      sub: "MXN",
+      deliveryTime: "5–7 días",
       items: [
         "Landing page de producto",
         "Botón WhatsApp integrado",
@@ -236,20 +241,22 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa Digital",
       name: "Redes + contenido inicial",
       price: "$2,500",
-      sub: "MXN · 5 días",
+      sub: "MXN",
+      deliveryTime: "5 días",
       items: [
-        "12 posts estáticos mensuales",
+        "15 posts estáticos mensuales",
         "Diseño adaptado a tu identidad visual",
         "Copy incluido",
       ],
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Redes + contenido inicial* (12 posts mensuales + diseño + copy · $2,500 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Redes + contenido inicial* (15 posts mensuales + diseño + copy · $2,500 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Más completo",
       name: "Redes + contenido completo",
       price: "$6,000",
       sub: "MXN / mes",
+      deliveryTime: "5–7 días",
       items: [
         "12 posts estáticos mensuales",
         "Edición de 2 reels (tú grabas, nosotros editamos)",
@@ -266,7 +273,8 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa Digital",
       name: "Bot WhatsApp 24/7",
       price: "$3,000",
-      sub: "MXN · 5–7 días",
+      sub: "MXN / mes",
+      deliveryTime: "5–7 días",
       items: [
         "Responde precios, horarios y ubicación",
         "500 mensajes / mes incluidos",
@@ -371,6 +379,10 @@ function PricingCard({ pkg, index, isCollapsible }: {
       <div className="text-[17px] font-bold mb-1 group-hover:text-neon transition-colors duration-400">{pkg.name}</div>
       <div className="text-[28px] font-bold text-neon font-mono my-3">{pkg.price}</div>
       <div className="text-[12px] text-muted tracking-[0.5px] mb-1">{pkg.sub}</div>
+      <div className="flex items-center gap-1.5 mb-3">
+        <span className="text-[10px] tracking-[1.5px] uppercase text-muted font-mono">Tiempo de entrega:</span>
+        <span className="text-[11px] font-bold text-white font-mono">{pkg.deliveryTime}</span>
+      </div>
 
       {pkg.badge === "// Alfa NOM" && pkg.price === "$2,300" && (
         <p className="text-[11px] text-muted italic mb-3">Menos que una consulta regulatoria. Entregado en 72h.</p>
@@ -378,7 +390,7 @@ function PricingCard({ pkg, index, isCollapsible }: {
       {pkg.badge === "// Más solicitado" && (
         <div className="mb-3 space-y-0.5">
           <p className="text-[11px] text-muted/60 line-through">4 proveedores separados: $22,000+ MXN</p>
-          <p className="text-[12px] text-neon font-bold">Aquí: todo en $12,000 con un solo equipo</p>
+          <p className="text-[12px] text-neon font-bold">Aquí: todo en $11,000 con un solo equipo</p>
         </div>
       )}
       {pkg.description && (
