@@ -138,7 +138,8 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
-      price: "$2,300",
+      price: "$2,300" ,
+      price: "A partir del segundo producto: $1,500 c/u"  ,
       sub: "MXN",
       deliveryTime: "2–3 días hábiles",
       items: [
