@@ -14,9 +14,9 @@ const services = [
 ];
 
 const paquetes = [
-  { label: "Solo Lab — $2,300 MXN",       href: "#paquetes" },
+  { label: "Tabla y sellos NOM — $2,300 MXN",       href: "#paquetes" },
   { label: "Inicio Producto — $5,000 MXN", href: "#paquetes" },
-  { label: "Marca Completa — $12,000 MXN", href: "#paquetes" },
+  { label: "Marca Completa — $11,000 MXN", href: "#paquetes" },
 ];
 
 const company = [
