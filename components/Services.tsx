@@ -19,7 +19,7 @@ const arms = [
       "Sellos frontales de advertencia (octágonos)",
       "Validación pre-impresión NOM-051 (medidas, proporciones, normativa)",
     ],
-    price: "$2,300 MXN",
+    price: "$2,300 MXN" "A partir del segundo producto: $1,500 c/u" ,
     time: "2–3 días",
     waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa NOM* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
   },
