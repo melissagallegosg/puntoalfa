@@ -30,8 +30,7 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
       price: "$2,300",
-      sub: "MXN",
-      sub: "A partir del segundo producto: $1,500 c/u",
+      sub: "MXN · A partir del segundo producto: $1,500 c/u",
       deliveryTime: "2–3 días hábiles",
       description: "Evita errores regulatorios desde el inicio.",
       items: [
@@ -139,9 +138,8 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
-      price: "$2,300" ,
-      price: "A partir del segundo producto: $1,500 c/u"  ,
-      sub: "MXN",
+      price: "$2,300",
+      sub: "MXN · A partir del segundo producto: $1,500 c/u",
       deliveryTime: "2–3 días hábiles",
       items: [
         "Tabla nutrimental teórica NOM-051",
