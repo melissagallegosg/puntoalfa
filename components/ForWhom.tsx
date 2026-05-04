@@ -40,7 +40,7 @@ const profiles = [
 ];
 
 const painPoints = [
-  { label: "Sin normativa",  desc: "Tu producto no puede venderse legalmente sin cumplir NOM-051",    solution: "→ Tabla NOM-051 en 72h desde $2,300" },
+  { label: "Sin normativa",  desc: "Tu producto no puede venderse legalmente sin cumplir NOM-051",    solution: "→ Tabla NOM-051 en 72h desde $800" },
   { label: "Sin identidad",  desc: "Una etiqueta genérica no conecta con tu consumidor ideal",         solution: "→ Etiqueta lista para venta desde $5,000" },
   { label: "Sin presencia",  desc: "Sin digital no existes para quien te busca en línea",              solution: "→ Landing page + redes desde $2,500" },
   { label: "Sin tiempo",     desc: "Coordinar 4 proveedores distintos te cuesta semanas y energía",    solution: "→ Un solo equipo, todo incluido" },

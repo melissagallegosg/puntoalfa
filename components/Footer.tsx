@@ -14,9 +14,9 @@ const services = [
 ];
 
 const paquetes = [
-  { label: "Tabla y sellos NOM — $2,300 MXN",       href: "#paquetes" },
-  { label: "Inicio Producto — $5,000 MXN", href: "#paquetes" },
-  { label: "Marca Completa — $11,000 MXN", href: "#paquetes" },
+  { label: "Tabla y sellos NOM — $800 MXN",            href: "#paquetes" },
+  { label: "Paquete 1 — Etiqueta + imagen — $5,000 MXN", href: "#paquetes" },
+  { label: "Paquete 2 — Marca Completa — $11,000 MXN",   href: "#paquetes" },
 ];
 
 const company = [
