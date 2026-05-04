@@ -20,6 +20,7 @@ const packages: Record<Tab, Array<{
   sub: string;
   deliveryTime: string;
   description?: string;
+  upgradeNote?: string;
   items: (string | PkgItem)[];
   star?: boolean;
   cta: string;
@@ -29,28 +30,26 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
-      price: "$2,300",
-      sub: "MXN · A partir del segundo producto: $1,500 c/u",
+      price: "$800",
+      sub: "MXN · A partir del segundo producto: $600 c/u",
       deliveryTime: "2–3 días hábiles",
       description: "Evita errores regulatorios desde el inicio.",
       items: [
         "Tabla nutrimental teórica NOM-051",
         "Sellos frontales de advertencia",
         "PDF + PNG para etiqueta",
-        "Validación pre-impresión NOM-051",
-        "Revisión de medidas y proporciones",
         "Cumplimiento NOM-051 completo",
-        "Cero errores antes de imprenta",
       ],
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Tabla nutrimental + sellos NOM-051* (incluye validación pre-impresión · $2,300 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Tabla nutrimental + sellos NOM-051* ($800 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Creativo",
-      name: "Etiqueta + imagen de producto lista para venta",
+      name: "Paquete 1 — Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
       sub: "MXN",
       deliveryTime: "1 semana",
+      upgradeNote: "¿Ya adquiriste tu tabla nutrimental con nosotros? Pregunta por tu precio preferente.",
       items: [
         {
           label: "Tabla nutrimental + sellos NOM-051",
@@ -91,6 +90,7 @@ const packages: Record<Tab, Array<{
       sub: "MXN · Un solo equipo",
       deliveryTime: "3–4 semanas",
       description: "Convierte tu producto en una marca lista para vender.",
+      upgradeNote: "¿Ya adquiriste tu tabla nutrimental con nosotros? Pregunta por tu precio preferente — la tabla es tu punto de entrada natural a todo lo demás.",
       items: [
         {
           label: "Tabla nutrimental + sellos NOM-051",
@@ -138,21 +138,18 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
-      price: "$2,300",
-      sub: "MXN · A partir del segundo producto: $1,500 c/u",
+      price: "$800",
+      sub: "MXN · A partir del segundo producto: $600 c/u",
       deliveryTime: "2–3 días hábiles",
       items: [
         "Tabla nutrimental teórica NOM-051",
         "Sellos frontales de advertencia",
         "PDF + PNG para etiqueta",
-        "Validación pre-impresión NOM-051",
-        "Revisión de medidas y proporciones",
         "Cumplimiento NOM-051 completo",
-        "Cero errores antes de imprenta",
       ],
       star: true,
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Tabla nutrimental + sellos NOM-051* (incluye validación pre-impresión · $2,300 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Tabla nutrimental + sellos NOM-051* ($800 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa NOM",
@@ -171,26 +168,13 @@ const packages: Record<Tab, Array<{
   ],
   creativo: [
     {
-      badge: "// Alfa Creativo",
-      name: "Identidad básica de marca",
-      price: "$3,000",
-      sub: "MXN",
-      deliveryTime: "2–3 días hábiles",
-      items: [
-        "Logo funcional (listo para usar)",
-        "Paleta de colores",
-        "Tipografía recomendada",
-      ],
-      cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Identidad básica de marca* (logo + paleta + tipografía · $3,000 MXN). ¿Me pueden dar más información?",
-    },
-    {
       badge: "// Más completo",
-      name: "Etiqueta + imagen de producto lista para venta",
+      name: "Paquete 1 — Etiqueta + imagen de producto lista para venta",
       price: "$5,000",
       sub: "MXN",
       deliveryTime: "1 semana",
       description: "Diseño completo de tu producto para que puedas vender desde el inicio sin errores comunes.",
+      upgradeNote: "¿Ya adquiriste tu tabla nutrimental con nosotros? Pregunta por tu precio preferente.",
       items: [
         {
           label: "Identidad básica incluida",
@@ -226,7 +210,7 @@ const packages: Record<Tab, Array<{
     {
       badge: "// Alfa Digital",
       name: "Landing page de producto",
-      price: "$4,000",
+      price: "$5,000",
       sub: "MXN",
       deliveryTime: "5–7 días",
       items: [
@@ -235,7 +219,7 @@ const packages: Record<Tab, Array<{
         "Integración con redes sociales",
       ],
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Landing page de producto* (con botón WhatsApp + integración a redes · $4,000 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Landing page de producto* (con botón WhatsApp + integración a redes · $5,000 MXN). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Digital",
@@ -384,7 +368,7 @@ function PricingCard({ pkg, index, isCollapsible }: {
         <span className="text-[11px] font-bold text-white font-mono">{pkg.deliveryTime}</span>
       </div>
 
-      {pkg.badge === "// Alfa NOM" && pkg.price === "$2,300" && (
+      {pkg.badge === "// Alfa NOM" && pkg.price === "$800" && (
         <p className="text-[11px] text-muted italic mb-3">Menos que una consulta regulatoria. Entregado en 72h.</p>
       )}
       {pkg.badge === "// Más solicitado" && (
@@ -397,6 +381,15 @@ function PricingCard({ pkg, index, isCollapsible }: {
         <p className="text-[11px] text-muted/80 leading-relaxed mb-4 border-l-2 border-neon/30 pl-3">
           {pkg.description}
         </p>
+      )}
+      {pkg.upgradeNote && (
+        <div className="mb-4 px-3 py-2.5 rounded-lg border border-neon/20 bg-neon/[0.03] flex items-start gap-2">
+          <span className="text-[13px] flex-shrink-0">⭐</span>
+          <p className="text-[11px] text-muted leading-relaxed">
+            <span className="text-neon font-semibold">Precio preferente:</span>{" "}
+            {pkg.upgradeNote}
+          </p>
+        </div>
       )}
 
       <ul className="flex flex-col gap-3 flex-1 mb-6">

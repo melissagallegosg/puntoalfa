@@ -15,12 +15,11 @@ const arms = [
     description:
       "Tabla nutrimental teórica, sellos NOM-051 y cumplimiento regulatorio completo mediante cálculo teórico. Entrega en 2–3 días hábiles.",
     services: [
-      "Tabla nutrimental teórica NOM-051",
+      "Tabla nutrimental + sellos $800",
       "Sellos frontales de advertencia (octágonos)",
-      "Validación pre-impresión NOM-051 (medidas, proporciones, normativa)",
     ],
-    price: "$2,300 MXN",
-    priceSub: "A partir del segundo producto: $1,500 c/u",
+    price: "$800 MXN",
+    priceSub: "A partir del segundo producto: $600 c/u",
     time: "2–3 días",
     waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa NOM* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
   },
@@ -34,11 +33,10 @@ const arms = [
     description:
       "Identidad visual y diseño de etiqueta regulatoria. Tu producto con la imagen correcta para vender desde el primer día.",
     services: [
-      "Identidad básica de marca (logo funcional + paleta de colores + tipografía)",
-      "Etiqueta + imagen de producto lista para venta (identidad + etiqueta estructurada + mockups)",
+      "Paquete 1 — Etiqueta + imagen de producto lista para venta (identidad + etiqueta estructurada + mockups)",
       "Archivos listos para imprenta",
     ],
-    price: "Desde $3,000 MXN",
+    price: "Desde $5,000 MXN",
     time: "1 semana",
     waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa Creativo* (identidad de marca + diseño de etiqueta). ¿Me pueden orientar sobre qué servicio necesito?",
   },
@@ -52,7 +50,7 @@ const arms = [
     description:
       "Landing page, redes sociales y automatizaciones. Tu marca activa 24/7 desde el día del lanzamiento.",
     services: [
-      "Landing page de producto + botón WhatsApp integrado + integración con redes",
+      "Landing page de producto $5,000",
       "Estrategia de redes + contenido inicial (15 posts estáticos, copy incluido · entrega 5 días)",
       "Estrategia de redes completa (12 posts + 2 reels + 10 imágenes de producto, copy incluido)",
       "Bot WhatsApp 24/7 con flujos personalizados ($3,000 MXN/mes)",
@@ -562,7 +560,16 @@ export default function Services() {
                   // Incluye
                 </div>
                 {active === "creativo" ? (
-                  <CreativoExpandable services={activeArm.services} />
+                  <div>
+                    <CreativoExpandable services={activeArm.services} />
+                    <div className="mt-6 px-4 py-3 rounded-lg border border-lavender/20 bg-lavender/[0.04] flex items-start gap-3">
+                      <span className="text-[14px] flex-shrink-0">💜</span>
+                      <p className="text-[11px] text-muted leading-relaxed">
+                        <span className="text-white font-semibold">¿Ya adquiriste tu tabla nutrimental con nosotros?</span>{" "}
+                        Pregunta por tu <span style={{ color: "#AFA9EC" }} className="font-semibold">precio preferente</span>. Clientes de Alfa NOM tienen acceso a upgrades naturales con descuento.
+                      </p>
+                    </div>
+                  </div>
                 ) : (
                   <ul className="flex flex-col gap-4">
                     {activeArm.services.map((svc, i) => (
