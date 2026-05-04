@@ -27,23 +27,23 @@ const steps = [
   },
   {
     num: "03",
-    title: "Validación final",
-    desc: "Revisamos medidas, proporciones y cumplimiento completo antes de enviar a imprenta. Cero errores.",
-    tag: "Alfa Lab",
-    tagColor: "#C6F135",
-    tagBg: "rgba(198,241,53,0.07)",
-    time: "1 día",
-    icon: "✓",
-  },
-  {
-    num: "04",
-    title: "Lanzamiento digital",
+    title: "Presencia digital",
     desc: "Landing page, redes y automatizaciones activas. Tu marca lista para vender desde el primer día.",
     tag: "Alfa Digital",
     tagColor: "#85B7EB",
     tagBg: "rgba(133,183,235,0.07)",
     time: "5–7 días",
     icon: "⟁",
+  },
+  {
+    num: "04",
+    title: "Lanzamiento",
+    desc: "Todo listo: normativa, etiqueta e identidad, presencia digital. Un solo equipo, sin fricciones.",
+    tag: "Marca Completa",
+    tagColor: "#C6F135",
+    tagBg: "rgba(198,241,53,0.07)",
+    time: "3–4 semanas",
+    icon: "◆",
   },
 ];
 
@@ -198,7 +198,7 @@ export default function Process() {
               <span className="text-[12px] font-semibold text-white">Marca Completa</span>
             </div>
             <span className="text-[12px] text-muted">3–4 semanas</span>
-            <span className="text-[14px] font-bold text-neon font-mono">$12,000 MXN</span>
+            <span className="text-[14px] font-bold text-neon font-mono">$11,000 MXN</span>
             <span className="text-[11px] text-muted/60">· Un solo equipo</span>
           </div>
           <a

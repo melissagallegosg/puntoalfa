@@ -138,7 +138,7 @@ function NeonPortal() {
 const stats = [
   { num: "NOM-051", label: "Cumplimiento normativo" },
   { num: "2–3d",    label: "Entrega tabla nutrimental" },
-  { num: "$2,300",  label: "Desde MXN por servicio" },
+  { num: "$800",    label: "Desde MXN por servicio" },
   { num: "3",       label: "Áreas especializadas" },
 ];
 

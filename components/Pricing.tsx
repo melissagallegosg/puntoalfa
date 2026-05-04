@@ -84,8 +84,8 @@ const packages: Record<Tab, Array<{
       waMsg: "Hola Punto Alfa 👋 Me interesa el paquete *Etiqueta + imagen de producto lista para venta* (NOM-051 + identidad + etiqueta + mockups · $5,000 MXN). ¿Me pueden dar más información?",
     },
     {
-      badge: "// Más solicitado",
-      name: "Marca Completa",
+      badge: "// Alfa Completo",
+      name: "Paquete 2 — Marca Completa",
       price: "$11,000",
       sub: "MXN · Un solo equipo",
       deliveryTime: "3–4 semanas",
@@ -348,14 +348,7 @@ function PricingCard({ pkg, index, isCollapsible }: {
           : "border border-white/[0.06]"
       }`}
     >
-      {pkg.badge === "// Más solicitado" && (
-        <div className="absolute -top-px left-1/2 -translate-x-1/2">
-          <span className="inline-block bg-neon text-bg text-[10px] font-bold tracking-[1.5px] uppercase px-4 py-1 rounded-b-md">
-            Más solicitado
-          </span>
-        </div>
-      )}
-      {pkg.star && pkg.badge !== "// Más solicitado" && (
+      {pkg.star && (
         <div className="absolute top-0 left-0 right-0 h-px border-beam" />
       )}
 
@@ -371,7 +364,7 @@ function PricingCard({ pkg, index, isCollapsible }: {
       {pkg.badge === "// Alfa NOM" && pkg.price === "$800" && (
         <p className="text-[11px] text-muted italic mb-3">Menos que una consulta regulatoria. Entregado en 72h.</p>
       )}
-      {pkg.badge === "// Más solicitado" && (
+      {pkg.badge === "// Alfa Completo" && (
         <div className="mb-3 space-y-0.5">
           <p className="text-[11px] text-muted/60 line-through">4 proveedores separados: $22,000+ MXN</p>
           <p className="text-[12px] text-neon font-bold">Aquí: todo en $11,000 con un solo equipo</p>
@@ -468,7 +461,7 @@ export default function Pricing() {
           de entrada
         </motion.h2>
         <motion.p variants={fadeUp} className="text-muted text-[15px] max-w-md leading-relaxed">
-          Servicios individuales o paquetes integrados. Todo pensado para que no necesites más de un proveedor.
+          Paquetes individuales o integrados. Todo pensado para que no necesites más de un proveedor.
         </motion.p>
       </motion.div>
 
@@ -497,9 +490,9 @@ export default function Pricing() {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Servicios individuales */}
+          {/* Paquetes */}
           <div className="mb-3">
-            <div className="text-[10px] tracking-[3px] uppercase text-muted font-mono mb-3">// Servicios individuales</div>
+            <div className="text-[10px] tracking-[3px] uppercase text-muted font-mono mb-3">// Paquetes</div>
             <div className="grid md:grid-cols-3 gap-4">
               {packages.todos.slice(0, 2).map((pkg, i) => (
                 <PricingCard key={i} pkg={pkg} index={i} isCollapsible={true} />
