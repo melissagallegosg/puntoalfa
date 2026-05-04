@@ -41,23 +41,23 @@ const jsonLd = {
         name: "Tabla nutrimental NOM-051",
         description:
           "Cálculo teórico de tabla nutrimental y sellos de advertencia conforme a NOM-051-SCFI/SSAI-2010",
-        price: "2300",
+        price: "800",
         priceCurrency: "MXN",
       },
       {
         "@type": "Offer",
-        name: "Inicio Producto",
+        name: "Paquete 1 — Etiqueta + imagen de producto",
         description:
-          "Tabla + sellos NOM-051 + validación pre-impresión + branding de empaque",
+          "Tabla + sellos NOM-051 + branding de empaque",
         price: "5000",
         priceCurrency: "MXN",
       },
       {
         "@type": "Offer",
-        name: "Lanzamiento",
+        name: "Marca Completa",
         description:
           "NOM-051 completo + diseño de empaque + landing page + estrategia de redes",
-        price: "9000",
+        price: "11000",
         priceCurrency: "MXN",
       },
     ],
