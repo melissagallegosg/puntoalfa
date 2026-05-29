@@ -15,11 +15,11 @@ const arms = [
     description:
       "Tabla nutrimental teórica, sellos NOM-051 y cumplimiento regulatorio completo mediante cálculo teórico. Entrega en 2–3 días hábiles.",
     services: [
-      "Tabla nutrimental + sellos $800",
+      "Tabla nutrimental + sellos $800 (precio promocional)",
       "Sellos frontales de advertencia (octágonos)",
     ],
     price: "$800 MXN",
-    priceSub: "A partir del segundo producto: $600 c/u",
+    priceSub: "Precio promocional · Precio normal $1,600 MXN",
     time: "2–3 días",
     waMsg: "Hola Punto Alfa 👋 Me interesa el área de *Alfa NOM* (tabla nutrimental + sellos NOM-051). ¿Me pueden orientar sobre qué servicio necesito?",
   },

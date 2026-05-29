@@ -31,7 +31,7 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
       price: "$800",
-      sub: "MXN · A partir del segundo producto: $600 c/u",
+      sub: "MXN · Precio promocional · Precio normal $1,600 MXN",
       deliveryTime: "2–3 días hábiles",
       description: "Evita errores regulatorios desde el inicio.",
       items: [
@@ -41,7 +41,7 @@ const packages: Record<Tab, Array<{
         "Cumplimiento NOM-051 completo",
       ],
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Tabla nutrimental + sellos NOM-051* ($800 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio *Tabla nutrimental + sellos NOM-051* ($800 MXN promocional). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa Creativo",
@@ -139,7 +139,7 @@ const packages: Record<Tab, Array<{
       badge: "// Alfa NOM",
       name: "Tabla nutrimental + sellos NOM-051",
       price: "$800",
-      sub: "MXN · A partir del segundo producto: $600 c/u",
+      sub: "MXN · Precio promocional · Precio normal $1,600 MXN",
       deliveryTime: "2–3 días hábiles",
       items: [
         "Tabla nutrimental teórica NOM-051",
@@ -149,7 +149,7 @@ const packages: Record<Tab, Array<{
       ],
       star: true,
       cta: "Solicitar",
-      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Tabla nutrimental + sellos NOM-051* ($800 MXN). ¿Me pueden dar más información?",
+      waMsg: "Hola Punto Alfa 👋 Me interesa el servicio de *Tabla nutrimental + sellos NOM-051* ($800 MXN promocional). ¿Me pueden dar más información?",
     },
     {
       badge: "// Alfa NOM",
@@ -362,7 +362,12 @@ function PricingCard({ pkg, index, isCollapsible }: {
       </div>
 
       {pkg.badge === "// Alfa NOM" && pkg.price === "$800" && (
-        <p className="text-[11px] text-muted italic mb-3">Menos que una consulta regulatoria. Entregado en 72h.</p>
+        <div className="mb-3 space-y-1">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neon/10 border border-neon/30">
+            <span className="text-neon text-[9px] font-bold tracking-[1.5px] uppercase font-mono">🏷 Precio promocional</span>
+          </div>
+          <p className="text-[11px] text-muted/70 italic">Precio normal: <span className="line-through text-muted/50">$1,600 MXN</span> — aprovecha antes de que vuelva al precio regular.</p>
+        </div>
       )}
       {pkg.badge === "// Alfa Completo" && (
         <div className="mb-3 space-y-0.5">
