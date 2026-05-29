@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, useSpring, useMotionValue } from "framer-motion";
-import { fadeUp, staggerContainer, WHATSAPP_URL, EASE_OUT_EXPO } from "@/lib/motion";
-import { useRef, useCallback } from "react";
+import { fadeUp, staggerContainer, EASE_OUT_EXPO } from "@/lib/motion";
+import { useRef, useCallback, useState } from "react";
+import QuoteModal from "@/components/QuoteModal";
 
-function MagneticCTA({ href, children }: { href: string; children: React.ReactNode }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+function MagneticCTA({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
+  const ref = useRef<HTMLButtonElement>(null);
   const x = useMotionValue(0); const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 160, damping: 16 });
   const sy = useSpring(y, { stiffness: 160, damping: 16 });
@@ -17,7 +18,7 @@ function MagneticCTA({ href, children }: { href: string; children: React.ReactNo
   const onLeave = useCallback(() => { x.set(0); y.set(0); }, [x, y]);
 
   return (
-    <motion.a ref={ref} href={href} target="_blank" rel="noopener noreferrer"
+    <motion.button ref={ref} type="button" onClick={onClick}
       style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave}
       whileTap={{ scale: 0.96 }}
       className="group relative overflow-hidden bg-neon text-bg text-[13px] font-bold tracking-[1px] uppercase px-12 py-5 rounded cursor-pointer"
@@ -27,11 +28,12 @@ function MagneticCTA({ href, children }: { href: string; children: React.ReactNo
       <motion.div className="absolute inset-0 bg-white/15"
         initial={{ x: "-110%", skewX: "-12deg" }} whileHover={{ x: "110%" }}
         transition={{ duration: 0.5, ease: EASE_OUT_EXPO }} />
-    </motion.a>
+    </motion.button>
   );
 }
 
 export default function CTABand() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section className="py-28 relative overflow-hidden border-t border-white/[0.05]">
       {/* Background gradient — Vercel template style */}
@@ -60,7 +62,7 @@ export default function CTABand() {
             Cuéntanos tu proyecto y te decimos exactamente qué necesitas.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <MagneticCTA href={WHATSAPP_URL}>Cotizar por WhatsApp →</MagneticCTA>
+            <MagneticCTA onClick={() => setModalOpen(true)}>Cotizar por WhatsApp →</MagneticCTA>
             <a href="#paquetes"
               className="inline-flex items-center gap-2 border border-white/[0.08] text-muted text-[13px] font-bold tracking-[1px] uppercase px-10 py-4 rounded hover:border-neon/40 hover:text-neon hover:bg-neon/[0.04] transition-all duration-300">
               Ver precios
@@ -68,6 +70,8 @@ export default function CTABand() {
           </motion.div>
         </motion.div>
       </div>
+
+      <QuoteModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }

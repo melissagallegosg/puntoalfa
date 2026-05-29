@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { WHATSAPP_URL, EASE_OUT_EXPO } from "@/lib/motion";
+import { EASE_OUT_EXPO } from "@/lib/motion";
 import { useRef, useEffect, useState, useCallback } from "react";
+import QuoteModal from "@/components/QuoteModal";
 
 /* ── Animated counter ── */
 function AnimatedNumber({ value }: { value: string }) {
@@ -32,8 +33,8 @@ function AnimatedNumber({ value }: { value: string }) {
 }
 
 /* ── Magnetic button ── */
-function MagneticBtn({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+function MagneticBtn({ href, onClick, children, primary = false }: { href?: string; onClick?: () => void; children: React.ReactNode; primary?: boolean }) {
+  const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const x = useMotionValue(0); const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 18 });
   const sy = useSpring(y, { stiffness: 200, damping: 18 });
@@ -44,23 +45,39 @@ function MagneticBtn({ href, children, primary = false }: { href: string; childr
   }, [x, y]);
   const onLeave = useCallback(() => { x.set(0); y.set(0); }, [x, y]);
 
-  return (
-    <motion.a ref={ref} href={href}
-      target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-      style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave}
-      whileTap={{ scale: 0.97 }}
-      className={`group relative overflow-hidden text-[12px] font-bold tracking-[1px] uppercase px-7 py-3.5 rounded cursor-pointer flex items-center gap-2 ${
-        primary
-          ? "bg-neon text-bg hover:shadow-[0_0_50px_rgba(198,241,53,0.45)]"
-          : "border border-white/[0.08] text-muted hover:border-neon/40 hover:text-neon hover:bg-neon/[0.04] backdrop-blur-sm"
-      } transition-shadow duration-300`}
-    >
+  const className = `group relative overflow-hidden text-[12px] font-bold tracking-[1px] uppercase px-7 py-3.5 rounded cursor-pointer flex items-center gap-2 ${
+    primary
+      ? "bg-neon text-bg hover:shadow-[0_0_50px_rgba(198,241,53,0.45)]"
+      : "border border-white/[0.08] text-muted hover:border-neon/40 hover:text-neon hover:bg-neon/[0.04] backdrop-blur-sm"
+  } transition-shadow duration-300`;
+
+  const inner = (
+    <>
       <span className="relative z-10">{children}</span>
       {primary && (
         <motion.div className="absolute inset-0 bg-white/15"
           initial={{ x: "-110%", skewX: "-12deg" }} whileHover={{ x: "110%" }}
           transition={{ duration: 0.5, ease: EASE_OUT_EXPO }} />
       )}
+    </>
+  );
+
+  if (onClick) {
+    return (
+      <motion.button ref={ref as React.Ref<HTMLButtonElement>} type="button" onClick={onClick}
+        style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave}
+        whileTap={{ scale: 0.97 }} className={className}>
+        {inner}
+      </motion.button>
+    );
+  }
+
+  return (
+    <motion.a ref={ref as React.Ref<HTMLAnchorElement>} href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
+      style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave}
+      whileTap={{ scale: 0.97 }} className={className}>
+      {inner}
     </motion.a>
   );
 }
@@ -147,6 +164,7 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <section ref={ref} className="relative min-h-screen flex flex-col justify-center overflow-hidden">
@@ -201,7 +219,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.5 }}
           className="flex flex-col items-center gap-3 mb-12"
         >
-          <MagneticBtn href={WHATSAPP_URL} primary>Cotizar gratis →</MagneticBtn>
+          <MagneticBtn onClick={() => setModalOpen(true)} primary>Cotizar gratis →</MagneticBtn>
           <a href="#servicios" className="text-[11px] text-muted/50 hover:text-muted transition-colors duration-300 tracking-[0.5px]">
             o explorar servicios ↓
           </a>
@@ -251,6 +269,8 @@ export default function Hero() {
         <motion.div className="w-px h-8 bg-gradient-to-b from-muted/20 to-transparent"
           animate={{ scaleY: [1, 0.4, 1], originY: 0 }} transition={{ duration: 1.8, repeat: Infinity }} />
       </motion.div>
+
+      <QuoteModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }
