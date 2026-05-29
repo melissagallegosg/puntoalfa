@@ -121,9 +121,9 @@ function CheckCard({
 }
 
 /* ── Step label ── */
-function StepLabel({ label }: { label: string }) {
+function StepLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] tracking-[3px] uppercase text-neon font-mono mb-2">{label}</p>
+    <p className="text-[10px] tracking-[3px] uppercase text-neon font-mono mb-2">{children}</p>
   );
 }
 
