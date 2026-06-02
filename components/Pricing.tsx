@@ -354,7 +354,12 @@ function PricingCard({ pkg, index, isCollapsible }: {
 
       <div className="text-[9px] tracking-[2px] uppercase text-neon font-mono mb-3">{pkg.badge}</div>
       <div className="text-[17px] font-bold mb-1 group-hover:text-neon transition-colors duration-400">{pkg.name}</div>
-      <div className="text-[28px] font-bold text-neon font-mono my-3">{pkg.price}</div>
+      <div className="flex items-baseline gap-1.5 my-3">
+        <span className="text-[28px] font-bold text-neon font-mono">{pkg.price}</span>
+        {pkg.price !== "A cotizar" && (
+          <span className="text-[11px] text-muted font-mono">+ IVA</span>
+        )}
+      </div>
       <div className="text-[12px] text-muted tracking-[0.5px] mb-1">{pkg.sub}</div>
       <div className="flex items-center gap-1.5 mb-3">
         <span className="text-[10px] tracking-[1.5px] uppercase text-muted font-mono">Tiempo de entrega:</span>
@@ -486,6 +491,8 @@ export default function Pricing() {
           </button>
         ))}
       </div>
+
+      <p className="text-[11px] text-muted/60 font-mono mb-6">* Todos los precios son + IVA</p>
 
       {/* Cards */}
       {tab === "todos" ? (
