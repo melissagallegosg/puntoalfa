@@ -218,6 +218,10 @@ export default function QuoteModal({
   // Reset on open
   useEffect(() => {
     if (open) {
+      // GA4: alguien abrió el modal de cotización
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "cta_cotizar_click");
+      }
       setStep(1);
       setDirection(1);
       setForm({
@@ -298,6 +302,10 @@ export default function QuoteModal({
   };
 
   const handleSubmit = () => {
+    // GA4: encuesta completa → abre WhatsApp
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag("event", "encuesta_completada");
+    }
     const msg = buildMessage(form);
     window.open(waUrl(msg), "_blank", "noopener,noreferrer");
     onClose();

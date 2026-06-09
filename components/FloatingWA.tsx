@@ -8,11 +8,19 @@ export default function FloatingWA() {
   const opacity = useTransform(scrollY, [200, 400], [0, 1]);
   const scale = useTransform(scrollY, [200, 400], [0.8, 1]);
 
+  const handleClick = () => {
+    // GA4: tocaron el botón flotante de WhatsApp
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag("event", "whatsapp_enviado");
+    }
+  };
+
   return (
     <motion.a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       style={{ opacity, scale }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}

@@ -437,6 +437,12 @@ function PricingCard({ pkg, index, isCollapsible }: {
         href={waUrl(pkg.waMsg)}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          // GA4: click en WhatsApp desde pricing
+          if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+            (window as any).gtag("event", "whatsapp_enviado");
+          }
+        }}
         className={`w-full text-center py-2.5 rounded text-[11px] tracking-[1px] uppercase font-semibold transition-all duration-400 ${
           pkg.star
             ? "bg-neon text-bg hover:shadow-[0_0_24px_rgba(198,241,53,0.35)] hover:scale-[1.02]"
