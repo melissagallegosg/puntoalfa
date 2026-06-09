@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import ParticleBackground from "@/components/ParticleBackground";
+
+// TODO: reemplaza G-XXXXXXXXXX con tu Measurement ID real de GA4
+const GA_ID = "G-XXXXXXXXXX";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -86,33 +90,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TLMGJ3WQ');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
-      </head>
       <body
         className={`${spaceGrotesk.variable} ${spaceMono.variable} font-sans bg-bg text-white antialiased grain`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TLMGJ3WQ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
-
         {/* Aurora Background */}
         <div className="aurora-bg" />
 
@@ -127,6 +107,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         {children}
       </body>
+
+      {/* ── Google Analytics 4 ── */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}');
+        `}
+      </Script>
     </html>
   );
 }
