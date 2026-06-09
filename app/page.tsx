@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import ForWhom from "@/components/ForWhom";
 import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
+import Tools from "@/components/Tools";
 import FAQ from "@/components/FAQ";
 import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
@@ -79,6 +80,7 @@ export default function Home() {
         <ForWhom />
         <Process />
         <Pricing />
+        <Tools />
         <FAQ />
         <CTABand />
       </main>
