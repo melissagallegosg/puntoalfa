@@ -4,8 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import ParticleBackground from "@/components/ParticleBackground";
 
-// TODO: reemplaza G-XXXXXXXXXX con tu Measurement ID real de GA4
-const GA_ID = "G-XXXXXXXXXX";
+const GA_ID = "G-C0KH28F961";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
