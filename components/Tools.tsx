@@ -5,6 +5,13 @@ import { useState, useCallback } from "react";
 import { fadeUp, staggerContainer, fadeScale, EASE_OUT_EXPO } from "@/lib/motion";
 import { waUrl } from "@/lib/motion";
 
+// ─── Analytics helper ─────────────────────────────────────────────────────────
+function track(eventName: string) {
+  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+    (window as any).gtag("event", eventName);
+  }
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type TipoProducto = "solido" | "liquido";
@@ -268,6 +275,7 @@ function CalculadoraSellos() {
   const [desc, setDesc] = useState("");
 
   const calcular = useCallback(() => {
+    track("herramienta_calcular_sellos");
     const thresholds = calcularThresholds(
       parseFloat(kcal) || 0,
       parseFloat(grasasSat) || 0,
@@ -286,6 +294,7 @@ function CalculadoraSellos() {
   }, [kcal, grasasSat, grasasTrans, azucaresAdd, sodio, tipo, sinCalorias]);
 
   const solicitarEvaluacion = () => {
+    track("herramienta_calc_wa_click");
     const count = resultado?.count ?? 0;
     const lista = resultado?.activeNames?.length
       ? resultado.activeNames.join(", ")
@@ -596,6 +605,7 @@ function EvaluadorProducto() {
       if (q < TOTAL_QUESTIONS) {
         setCurrentQ((q + 1) as QuestionId);
       } else {
+        track("herramienta_eval_completada");
         setPhase("result");
       }
     }, 280);
@@ -608,6 +618,7 @@ function EvaluadorProducto() {
   };
 
   const hablarConPuntoAlfa = () => {
+    track("herramienta_eval_wa_click");
     const stage = getStageLabel(answers);
     const rec = getRecommendedServices(answers);
     const servicios = rec.length > 0 ? rec.map((k) => SERVICES[k].name).join(", ") : "ninguno (producto listo)";
@@ -638,7 +649,7 @@ function EvaluadorProducto() {
           </h3>
           <p className="text-muted text-[15px] mb-6">Descúbrelo en 2 minutos.</p>
           <motion.button
-            onClick={() => setPhase("questions")}
+            onClick={() => { track("herramienta_eval_inicio"); setPhase("questions"); }}
             className="bg-neon text-bg text-[11px] font-bold tracking-[1px] uppercase px-5 py-2.5 rounded inline-flex items-center gap-2"
             whileHover={{ boxShadow: "0 0 28px rgba(198,241,53,0.35)", scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
