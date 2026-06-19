@@ -24,22 +24,27 @@ const BASE_URL = "https://www.puntoalfamx.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Punto Alfa — Ciencia · Diseño · Estrategia",
+    // CAMBIO: Agrega "NOM-051" y "México" en el title default
+    default: "Punto Alfa — Tabla NOM-051 y Etiqueta en 72h · México",
     template: "%s | Punto Alfa",
   },
   description:
-    "Agencia técnica especializada en lanzamiento de productos alimenticios en México. NOM-051, etiqueta nutrimental, diseño de empaque y estrategia digital en un solo lugar.",
+    // CAMBIO: Agrega "México" para Local SEO y refuerza la USP de velocidad
+    "Agencia técnica para lanzamiento de productos alimenticios en México. Tabla nutrimental NOM-051 en 72 horas desde $800 MXN. Sin laboratorio, 100% remoto. México toda la república.",
   keywords: [
     "NOM-051",
-    "etiqueta nutrimental",
     "tabla nutrimental México",
-    "lanzamiento de producto alimenticio",
-    "industria alimentaria México",
-    "sellos de advertencia",
-    "diseño de etiqueta",
-    "emprendedor alimentario",
+    "etiqueta NOM-051",
+    "tabla nutrimental sin laboratorio",
+    "sellos de advertencia NOM-051",
+    "diseño de etiqueta alimentaria",
+    "lanzamiento producto alimenticio México",
+    "consultoría NOM-051 startups",
+    "branding empaque alimentos",
+    "agencia alimentaria México",
     "COFEPRIS",
-    "branding de empaque",
+    "calculadora NOM-051",
+    "etiquetado alimentos México",
   ],
   authors: [{ name: "Punto Alfa", url: BASE_URL }],
   creator: "Punto Alfa",
@@ -59,24 +64,26 @@ export const metadata: Metadata = {
     type: "website",
     url: BASE_URL,
     siteName: "Punto Alfa",
-    title: "Punto Alfa — De la receta al mercado",
+    // CAMBIO: Title OG más directo con keyword + USP
+    title: "Punto Alfa — Tu etiqueta NOM-051 lista en 72 horas",
     description:
-      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y estrategia digital en un solo equipo.",
+      "Tabla nutrimental, diseño de etiqueta y estrategia digital para emprendedores alimentarios en México. Desde $800 MXN. Sin enviar muestras.",
     locale: "es_MX",
     images: [
       {
+        // ACCIÓN REQUERIDA: Crear este archivo en /public/og-image.png (1200x630px)
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Punto Alfa — Agencia técnica para lanzamiento de productos alimenticios en México",
+        alt: "Punto Alfa — Tabla nutrimental NOM-051 en 72 horas para emprendedores alimentarios en México",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Punto Alfa — De la receta al mercado",
+    title: "Punto Alfa — Tu etiqueta NOM-051 lista en 72 horas",
     description:
-      "Ciencia, diseño y estrategia para emprendedores alimentarios. NOM-051, etiqueta nutrimental y digital en un solo equipo.",
+      "Tabla nutrimental, diseño de etiqueta y estrategia digital. Desde $800 MXN. Sin laboratorio, 100% remoto.",
     images: ["/og-image.png"],
     creator: "@puntoalfamx",
   },
