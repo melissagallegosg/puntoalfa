@@ -25,6 +25,14 @@ const faqs = [
     q: "¿Cuánto tiempo tarda todo el proceso de etiqueta completa?",
     a: "Si contratas solo tabla nutrimental + sellos: 2–3 días hábiles. Si además necesitas diseño de etiqueta: 1 semana adicional. Si contratas el paquete Marca Completa (NOM-051 + identidad + etiqueta + digital): 3–4 semanas para el proceso completo.",
   },
+  {
+    q: "¿Cuánto cuesta la tabla nutrimental en México?",
+    a: "En Punto Alfa, la tabla nutrimental por cálculo teórico con sellos NOM-051 tiene precio promocional de $1,600 MXN. Los análisis de laboratorio tradicionales cuestan entre $3,000 y $8,000 MXN adicionales y requieren enviar muestras físicas — algo que con nosotros no es necesario.",
+  },
+  {
+    q: "¿Qué requisitos necesito para vender mi producto en supermercados como Walmart?",
+    a: "Para ingresar a cadenas de autoservicio en México, tu producto necesita: tabla nutrimental NOM-051 vigente, sellos de advertencia correctamente determinados, etiqueta con toda la información obligatoria (denominación, lista de ingredientes, contenido neto, país de origen, datos del responsable) y en muchos casos RFC y alta ante SAT. Punto Alfa se encarga de la parte normativa y de diseño.",
+  },
 ];
 
 function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {

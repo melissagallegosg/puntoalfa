@@ -184,7 +184,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-badge mb-8"
         >
           <span className="pulse-dot w-2 h-2 rounded-full bg-neon flex-shrink-0" />
-          <span className="text-[12px] text-muted">Industria Alimentaria · México</span>
+          <span className="text-[12px] text-muted">NOM-051 · México</span>
         </motion.div>
 
         {/* Headline — directo: pain point + solución en 6 palabras */}
@@ -210,7 +210,7 @@ export default function Hero() {
           transition={{ duration: 0.85, ease: EASE_OUT_EXPO, delay: 0.38 }}
           className="text-[17px] text-muted leading-relaxed max-w-[520px] mb-10"
         >
-          Tu producto listo para vender, sin problemas de etiquetado.
+          Tabla nutrimental y sellos de advertencia por cálculo teórico. Sin enviar muestras. Desde $800 MXN.
         </motion.p>
 
         {/* CTA — único primario */}

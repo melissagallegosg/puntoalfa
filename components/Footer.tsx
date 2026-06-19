@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="col-span-2">
             <a href="#" className="flex items-center gap-2.5 mb-5">
               <div className="w-7 h-7 relative flex-shrink-0">
-                <Image src="/images/logo.jpg" alt="Punto Alfa" fill sizes="28px"
+                <Image src="/images/logo.jpg" alt="Punto Alfa — Agencia NOM-051 para emprendedores alimentarios en México" fill sizes="28px"
                   className="object-contain" style={{ mixBlendMode: "screen" }} />
               </div>
               <span className="text-[12px] font-bold tracking-[3px] uppercase">Punto Alfa</span>
@@ -45,7 +45,7 @@ export default function Footer() {
               Ciencia · Diseño · Estrategia para emprendedores de la industria alimentaria.
             </p>
             <div className="text-[10px] tracking-[1.5px] uppercase text-muted/60 font-mono mb-5">
-              México
+              · México
             </div>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-neon/10 border border-neon/20 text-neon text-[11px] font-mono tracking-[1px] uppercase px-4 py-2 rounded hover:bg-neon/20 transition-colors mb-3">

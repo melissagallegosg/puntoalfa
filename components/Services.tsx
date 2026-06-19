@@ -8,12 +8,12 @@ const arms = [
   {
     id: "lab",
     tag: "Alfa NOM",
-    name: "Ciencia y normativa",
+    name: "Tabla nutrimental NOM-051 sin laboratorio",
     icon: "⬡",
     color: "neon",
     accent: "#C6F135",
     description:
-      "Tabla nutrimental teórica, sellos NOM-051 y cumplimiento regulatorio completo mediante cálculo teórico. Entrega en 2–3 días hábiles.",
+      "Calculamos tu tabla nutrimental teórica y tus sellos frontales de advertencia conforme a NOM-051, sin que envíes muestras físicas. Proceso 100% remoto. Entrega en 2–3 días hábiles.",
     services: [
       "Tabla nutrimental + sellos $800 (precio promocional)",
       "Sellos frontales de advertencia (octágonos)",
@@ -26,12 +26,12 @@ const arms = [
   {
     id: "creativo",
     tag: "Alfa Creativo",
-    name: "Diseño e identidad",
+    name: "Diseño de etiqueta alimentaria y branding de empaque",
     icon: "◈",
     color: "lavender",
     accent: "#AFA9EC",
     description:
-      "Identidad visual y diseño de etiqueta regulatoria. Tu producto con la imagen correcta para vender desde el primer día.",
+      "Etiqueta regulatoria lista para imprenta + identidad visual para tu marca de alimentos. Integramos la tabla NOM-051 con el diseño desde el inicio, para que el producto se vea profesional y cumpla la norma desde el día uno.",
     services: [
       "Paquete 1 — Etiqueta + imagen de producto lista para venta (identidad + etiqueta estructurada + mockups)",
       "Archivos listos para imprenta",
@@ -43,12 +43,12 @@ const arms = [
   {
     id: "digital",
     tag: "Alfa Digital",
-    name: "Presencia y automatización",
+    name: "Estrategia digital para lanzar tu marca de alimentos",
     icon: "⟁",
     color: "sky-blue",
     accent: "#85B7EB",
     description:
-      "Landing page, redes sociales y automatizaciones. Tu marca activa 24/7 desde el día del lanzamiento.",
+      "Landing page, redes sociales y bot de WhatsApp para que tu marca de alimentos esté activa 24/7 desde el primer día de venta. Contenido, copy y automatizaciones incluidos.",
     services: [
       "Landing page de producto $5,000",
       "Estrategia de redes + contenido inicial (15 posts estáticos, copy incluido · entrega 5 días)",
